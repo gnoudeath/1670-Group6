@@ -29,6 +29,23 @@ async function checkUserRole(nameI,passI){
         return user.role;
     }
 }
+async function searchObjectbyName(collectionName, name) {
+    const dbo = await getdbo();
+    const result = await dbo
+      .collection(collectionName)
+      .find({ name: { $regex: name, $options: "i" } })
+      .toArray();
+    return result;
+}
+
+  async function searchObjectbyPrice(collectionName, price) {
+    const dbo = await getdbo();
+    const result = await dbo
+      .collection(collectionName)
+      .find({ price: price })
+      .toArray();
+    return result;
+}
 
 const USERS_TABLE_NAME = "Users"
 
