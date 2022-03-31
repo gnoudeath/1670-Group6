@@ -4,7 +4,7 @@ const router = express.Router();
 const profilesController = require('../controllers/profilesController');
 
 
-router.use('/:updateprofile', profilesController.show);
+// router.use('/:updateprofile', profilesController.show);
 router.use('/', profilesController.index);
 
 

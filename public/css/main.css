@@ -58,11 +58,10 @@
   }
   .search2{
     width: 100%;
-    margin: auto;
   }
   .search3{
     width: 500px;
-    
+    padding-right: 50px;    
   }
   .search4{
     padding-left: 7px;
@@ -74,6 +73,7 @@
     width: 100%;
     display: flex;
     justify-content: end;
+    margin: auto;
     
   }
 .collapse{
@@ -98,13 +98,11 @@ a{
   height: 500px;
   border: 1px red solid;
 }
-.img{
-    display: inline-flex;
-    margin: auto;
-    border: 1px red solid;
+
+.card-book-item{
+  margin-top: 26px;
+ 
 }
-.item-1{
-  width: 100px;
-  height: 200px;
-}
+
+
 
