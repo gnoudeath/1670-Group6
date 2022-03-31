@@ -62,9 +62,9 @@ router.get('/product', async(req,res)=>{
 
     res.render("Admin_Product",{book:book})
 })
-//addbook
+addbook
 router.get('/addbook',async(req,res)=>{
-    res.render("AddBook")
+    res.render("addBook")
 })
 router.post('/addbook', async(req,res)=>
 {
@@ -76,6 +76,6 @@ router.post('/addbook', async(req,res)=>
     const CategoryID = await dbHandler.getDocumentByName("Category", Category)
     const newBook = {name:nameInput,des:Description, price:Number.parseFloat(priceInput), pic:image, category:CategoryID._id}
     await dbHandler.insertObject("Book",newBook)
-    // res.redirect('/admin/product')
+    res.redirect('/product')
 }
 )
