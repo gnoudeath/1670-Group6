@@ -1,9 +1,22 @@
 const express = require('express')
 const req = require('express/lib/request')
 const res = require('express/lib/response')
-const async = require('hbs/lib/async')
 const router = express.Router()
-const {insertObject,checkUserRole,USERS_TABLE_NAME} = require('../databaseHandler')
+const {insertObject,checkUserRole,getAllProducts,USERS_TABLE_NAME} = require('../databaseHandler')
+const app = express()
+
+const {MongoClient, Int32} = require('mongodb')
+const url = "mongodb+srv://new-duong-0805:123456789td@cluster0.pbe5o.mongodb.net/test";
+const client = new MongoClient(url, {useNewUrlParser: true,useUnifiedTopology: true });
+
+router.get('/', async (req, res) =>{
+    
+    const client = await MongoClient.connect(url);
+    const dbo = client.db("Test");
+    const allProducts = await dbo.collection("Book").find({}).toArray();
+    res.render('home', { data: allProducts});
+    
+})
 
 
 

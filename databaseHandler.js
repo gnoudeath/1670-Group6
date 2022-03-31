@@ -10,6 +10,12 @@ async function getDB()  {
     return dbo;
 }
 
+async function getAllProducts(){
+    const dbo = await getDB();
+    const allProducts = await dbo.collection("Book").find({}).toArray();
+    return allProducts;
+}
+
 async function insertObject(collectionName,objectToInsert){
     const dbo = await getDB();
     const newObject = await dbo.collection(collectionName).insertOne(objectToInsert);
@@ -29,6 +35,8 @@ async function checkUserRole(nameI,passI){
         return user.role;
     }
 }
+
+
 async function searchObjectbyName(collectionName, name) {
     const dbo = await getdbo();
     const result = await dbo
@@ -49,4 +57,4 @@ async function searchObjectbyName(collectionName, name) {
 
 const USERS_TABLE_NAME = "Users"
 
-module.exports = {insertObject,checkUserRole,USERS_TABLE_NAME}
+module.exports = {insertObject,checkUserRole,getDB,getAllProducts,USERS_TABLE_NAME}
