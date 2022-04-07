@@ -4,6 +4,7 @@ const res = require('express/lib/response')
 const router = express.Router()
 const {insertObject,checkUserRole,getAllProducts,USERS_TABLE_NAME} = require('../databaseHandler')
 const app = express()
+const dbHandler = require("../databaseHandler");
 
 const {MongoClient, Int32} = require('mongodb')
 const url = "mongodb+srv://new-duong-0805:123456789td@cluster0.pbe5o.mongodb.net/test";
@@ -14,7 +15,7 @@ router.get('/', async (req, res) =>{
     const client = await MongoClient.connect(url);
     const dbo = client.db("Test");
     const allProducts = await dbo.collection("Book").find({}).toArray();
-    res.render('home', { data: allProducts});
+    res.render('homeAdmin', { data: allProducts});
     
 })
 
@@ -43,8 +44,8 @@ router.post('/login',async(req,res)=>{
         }
         //res.render('home',{userInfo:req.session.User})
         res.redirect('/')
-
     }
+    
 })
 
 
@@ -68,10 +69,17 @@ router.post('/register',(req,res)=>{
     res.render('Login')
 })
 
-module.exports = router;
 
+//Admin
+module.exports = router;
+router.get('/product', async (req, res) => {
+    const book = await dbHandler.getAllProducts("Book")
+    res.render("Admin_Product", {book:book})
+    
+});
+//addbook
 router.get('/addbook', async (req, res)=> {
-    res.render("addBook")
+    res.render("AddBook")
 })
 router.post('/addbook', async (req, res) => {
     const nameInput = req.body.txtName
@@ -83,6 +91,5 @@ router.post('/addbook', async (req, res) => {
     const newBook = {name:nameInput, des:Description, price:Number.parseFloat(priceInput), pic:image, category:CategoryID._id}
     await dbHandler.insertObject("Book", newBook)
     res.redirect('/admin/product')
-
 })
 
