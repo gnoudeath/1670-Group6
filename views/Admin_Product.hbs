@@ -1,0 +1,44 @@
+
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+</head>
+<body>
+    <li><a href="/admin/addbook">Add Book</a></li>
+    <div>
+        <table class="table">
+        <thead>
+            <tr>
+                <th>Products ID</th>
+                <th>Products Name</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Description</th>
+                <th>Operation</th>
+                <th>Operation</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each Book}}
+            <tr>
+                <td>{{_id}}</td>
+                <td>{{name}}</td>
+                <td>{{price}}</td>
+                <td>
+                    <div class="image"><img style="width: 100px; height: 100px"  src="{{pic}}" alt=""></div>
+                </td>
+                <td>{{des}}</td>
+                <td class="Update"> <a href="/admin/updatebook?id={{_id}}">Update</a> </td>
+                <td class=" Delete"><a href="/admin/deletebook?id={{_id}}">Delete</a> </td>
+            </tr>
+            {{/each}}
+        </tbody>
+        </table>
+    </div>
+</body>
+</html>
