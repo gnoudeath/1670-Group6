@@ -10,6 +10,7 @@ async function getDB()  {
     return dbo;
 }
 
+
 async function getAllProducts(){
     const dbo = await getDB();
     const allProducts = await dbo.collection("Book").find({}).toArray();
@@ -47,7 +48,7 @@ async function searchObjectbyName(collectionName, name) {
 }
 
   async function searchObjectbyPrice(collectionName, price) {
-    const dbo = await getdbo();
+    const dbo = await getDB();
     const result = await dbo
       .collection(collectionName)
       .find({ price: price })
@@ -55,6 +56,30 @@ async function searchObjectbyName(collectionName, name) {
     return result;
 }
 
+async function deleteDocumentById(collectionName, id) {
+    const dbo = await getDB();
+    await dbo.collection(collectionName).deleteOne({ _id: ObjectId(id) });
+  }
+
+async function deleteDocument(collectionName, objectToDelete) {
+    const dbo = await getDB();
+    await dbo.collection(collectionName).deleteOne(objectToDelete)
+  }
+async function deleteOne(collectionName, deleteObject) {
+    const dbo = await getDB();
+    const result = await dbo.collection(collectionName).deleteOne(deleteObject);
+    if (result.deletedCount > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 const USERS_TABLE_NAME = "Users"
 
-module.exports = {insertObject,checkUserRole,getDB,getAllProducts,USERS_TABLE_NAME}
+module.exports = {insertObject,
+                  checkUserRole,
+                  getDB,getAllProducts, 
+                  deleteDocumentById,
+                  deleteDocument,
+                  deleteOne,
+                  USERS_TABLE_NAME}

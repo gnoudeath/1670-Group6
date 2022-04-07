@@ -90,4 +90,11 @@ router.post('/addbook', async (req, res) => {
     await dbHandler.insertObject("Book", newBook)
     res.redirect('/admin/product')
 })
+//delete book
+router.get('/deletebook', async (req, res) => {
+    const id = req.query.id
+    console.log(id)
+    await dbHandler.deleteDocumentById("Book", id)
+    res.redirect('/admin/product')
+})
 
