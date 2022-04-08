@@ -6,7 +6,7 @@ const {insertObject,checkUserRole,getAllProducts,USERS_TABLE_NAME} = require('..
 const app = express()
 const dbHandler = require("../databaseHandler");
 
-const {MongoClient, Int32} = require('mongodb')
+const {MongoClient, Int32, Db} = require('mongodb')
 const url = "mongodb+srv://new-duong-0805:123456789td@cluster0.pbe5o.mongodb.net/test";
 const client = new MongoClient(url, {useNewUrlParser: true,useUnifiedTopology: true });
 
@@ -97,4 +97,20 @@ router.get('/deletebook', async (req, res) => {
     await dbHandler.deleteDocumentById("Book", id)
     res.redirect('/admin/product')
 })
-
+router.get('/updatebook', async (req, res) => {
+    const id = req.query.id
+    const result = await dbHandler.getDocumentById(id, "Book")
+    res.render('updatebook', {book:result})
+})
+router.post('/updatebook', async (req, res) => {
+    const nameInput = req.body.txtName
+    const priceInput = req.body.txtPrice
+    const image = req.body.txtImage
+    const Description = req.body.txtDescription
+    const UpdateValue = {$set: {name:nameInput, des:Description, price:Number.parseFloat(priceInput), image:image,}}
+    const id = req.body.txtid
+    console.log(UpdateValue)
+    console.log(id)
+    await dbHandler.updateDocument(id, UpdateValue,"Book")
+    res.redirect('/admin/product')
+})

@@ -74,6 +74,19 @@ async function deleteOne(collectionName, deleteObject) {
       return false;
     }
   }
+async function getDocumentById(id, collectionName) {
+    const dbo = await getDB();
+    const result = await dbo
+      .collection(collectionName)
+      .findOne({ _id: ObjectId(id) });
+    return result;
+  }
+async function updateDocument(id, updateValues, collectionName) {
+    const dbo = await getDB();
+    await dbo
+      .collection(collectionName)
+      .updateOne({ _id: ObjectId(id) }, updateValues);
+  }
 const USERS_TABLE_NAME = "Users"
 
 module.exports = {insertObject,
@@ -82,4 +95,6 @@ module.exports = {insertObject,
                   deleteDocumentById,
                   deleteDocument,
                   deleteOne,
+                  getDocumentById,
+                  updateDocument,
                   USERS_TABLE_NAME}
