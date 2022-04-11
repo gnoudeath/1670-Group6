@@ -97,4 +97,6 @@ module.exports = {insertObject,
                   deleteOne,
                   getDocumentById,
                   updateDocument,
+                  searchObjectbyPrice,
+                  searchObjectbyName,
                   USERS_TABLE_NAME}
