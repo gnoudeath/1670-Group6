@@ -112,7 +112,7 @@ const adminController = require('./controllers/admin');
 app.use('/homeAdmin', adminController)
 
 const userController = require("./controllers/customer");
-const { hash } = require('bcrypt');
+
 app.use("/", userController);
 
 
