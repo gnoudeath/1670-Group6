@@ -103,4 +103,20 @@ router.get('/deletecat',async(req,res)=>{
     res.redirect('/admin/category')
 })
 
+router.get('/updatecat',async(req,res)=>{
+    const id = req.query.id
+    const result = await dbHandler.getDocumentById(id, "Category")
+    const cat = await dbHandler.getAllCategory();
+    res.render('Admin_Category',{cat:cat, result:result})
+})
+
+router.post('/updatecat',async(req,res)=>{
+    const nameCat = req.body.name
+    const descCat = req.body.desc
+    const id = req.body.id
+    const UpdateValue = {$set: {cat_name:nameCat , cat_desc:descCat}}
+    await dbHandler.updateDocument(id, UpdateValue,"Category")
+    res.redirect('/admin/category')
+})
+
 module.exports = router;

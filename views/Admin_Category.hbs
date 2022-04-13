@@ -23,13 +23,32 @@
     <tr>
       <td>{{cat_name}}</td>
       <td>{{cat_desc}}</td>
-      <td><a href="">EDIT</a></td>
+      <td><a href="/admin/updatecat?id={{_id}}">EDIT</a></td>
       <td><a href="/admin/deletecat?id={{_id}}">DELETE</a></td>
       
     </tr>
    {{/each}}
   </tbody>
 </table>
+{{#if result}}
+<form action="/admin/updatecat" method="post">
+    <div class="form-group">
+      <input type="hidden" name="id" value="{{result._id}}">
+    </div>
+    <div class="form-group">
+        
+        Name:<input type="text" name="name" id="name" value="{{result.cat_name}}" class="form-control" placeholder="Input name of category" style="width: 30%;">
+    </div>
+    
+    <div class="form-group">
+    <label for="textarea">Example textarea</label>
+    <textarea class="form-control" id="textarea"   name="desc" rows="3" style="width: 50%;">{{result.cat_desc}}</textarea>
+    </div>
+    
+        <button type="submit" class="btn btn-primary">Update category  </button>
+    
+</form>
+{{else}}
 <form action="/admin/category" method="post">
     <div class="form-group">
         
@@ -38,11 +57,13 @@
     
     <div class="form-group">
     <label for="textarea">Example textarea</label>
-    <textarea class="form-control" id="textarea" name="desc" rows="3" style="width: 50%;"></textarea>
+    <textarea class="form-control" id="textarea"  name="desc" rows="3" style="width: 50%;"></textarea>
     </div>
     
         <button type="submit" class="btn btn-primary">Add category  </button>
     
 </form>
+{{/if}}
+
 </body>
 </html>
