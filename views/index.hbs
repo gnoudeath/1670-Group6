@@ -3,17 +3,19 @@
 
 <head>
   <title>CSS Template</title>
-  
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.0/slick/slick.css" />
-    <link rel="stylesheet" type="text/css"
-        href="https://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.0/slick/slick-theme.css" />
+<link rel="stylesheet" type="text/css"
+  href="https://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.0/slick/slick-theme.css" />
+
 <body>
   <div class="header">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -44,19 +46,24 @@
           </div> --}}
         </div>
         <div class="dropdown ml-auto">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                Account: {{userInfo.userName}}
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <h6> Role : {{userInfo.role}}</h4>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="profiles">Update Profile</a></li>
-                    <li><a class="dropdown-item" href="admin/login">Login</a></li>
-                    <li><a class="dropdown-item" href="admin/register">Register</a></li>
-                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Log out</a></li>
-                  </ul>
-            </div>
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Account: {{userInfo.name}}
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <h6> Role : {{userInfo.role}}</h4>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="customer/profiles">Update Profile</a></li>
+              <li><a class="dropdown-item" href="login">Login</a></li>
+              <li><a class="dropdown-item" href="register">Register</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="">Log out</a></li>
+          </ul>
+        </div>
       </div>
     </nav>
   </div>
@@ -72,7 +79,7 @@
                   d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
               </svg>
             </a>
-            
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
               aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -109,97 +116,100 @@
       </dir>
     </div>
   </div>
-  
-    <div class="nominations">
-        <div class="container pt-3">
-            <div class="de-cu">
-                <Span class="mt-4">RECOMMENDED BOOKS > <i class="fa fa-angle-right" aria-hidden="true"></i></Span>
-                <div class="manga your-class">
-                    <!-- <span class="left"><i class="fa fa-angle-left" aria-hidden="true"></i></span> -->
-                    <div class="item-1">
-                        <img src="https://salt.tikicdn.com/cache/280x280/ts/product/69/db/a7/66241354830619bdabb22ec630988ab6.jpg" width="222" height="200" alt="">
-                    </div>
-                    <div class="item-1">
-                        <img src="https://salt.tikicdn.com/cache/280x280/ts/product/45/5b/00/eb18b4683425eb6ccc345818c0fef24a.jpg" width="222" height="200" alt="">
-                    </div>
-                    <div class="item-1">
-                        <img src="https://www.bigw.com.au/medias/sys_master/images/images/h91/h63/29361456873502.jpg" width="222" height="200" alt="">
-                    </div>
-                    <div class="item-1">
-                        <img src="https://www.bookonatree.com/images/2020/09/16/book_alicia__400x556__400x556.png" width="222" height="200" alt="">
-                    </div>
-                    <div class="item-1">
-                        <img src="https://salt.tikicdn.com/cache/280x280/ts/product/93/68/2e/39030a96e3137f56dacddff1c6522c25.jpg" width="222" height="200" alt="">
-                    </div>
-                    <div class="item-1">
-                        <img src="https://images-na.ssl-images-amazon.com/images/I/71WC3z4Wt0L.jpg" width="222" height="200" alt="">
-                    </div>
-                    <div class="item-1">
-                        <img src="https://m.media-amazon.com/images/S/aplus-media/vc/71b1b1d9-df60-45a0-8997-7878a25f54f4.__CR0,0,150,300_PT0_SX150_V1___.jpg" width="222" height="200" alt="">
-                    </div>
-                    <div class="item-1">
-                        <img src="https://salt.tikicdn.com/ts/product/b2/57/8f/74519d557f0c1e0ce70a810cbf32a5f7.jpg" width="222" height="200" alt="">
-                    </div>
-                    <!-- <span class="right"><i class="fa fa-angle-right" aria-hidden="true"></i></span> -->
-                  
-                </div>
-                
-            </div>
-            
-          </div>
-          </div>
 
-    {{!-- <div class="mt4">
-      <div class="row">
-        {{#each data}}
-        <div class="col-sm-6 col-lg-4">
-          <div class="card card-book-item">
-            <img src="{{image}}" class="card-img-top" alt="..." width="128" height="228">
-            <div class="card-body">
-              <h5 class="card-title">{{name}}</h5>
-              <p class="card-text">{{Price}}</p>
-            </div>
+  <div class="nominations">
+    <div class="container pt-3">
+      <div class="de-cu">
+        <Span class="mt-4">RECOMMENDED BOOKS > <i class="fa fa-angle-right" aria-hidden="true"></i></Span>
+        <div class="manga your-class">
+          <!-- <span class="left"><i class="fa fa-angle-left" aria-hidden="true"></i></span> -->
+          <div class="item-1">
+            <img src="https://salt.tikicdn.com/cache/280x280/ts/product/69/db/a7/66241354830619bdabb22ec630988ab6.jpg"
+              width="222" height="200" alt="">
+          </div>
+          <div class="item-1">
+            <img src="https://salt.tikicdn.com/cache/280x280/ts/product/45/5b/00/eb18b4683425eb6ccc345818c0fef24a.jpg"
+              width="222" height="200" alt="">
+          </div>
+          <div class="item-1">
+            <img src="https://www.bigw.com.au/medias/sys_master/images/images/h91/h63/29361456873502.jpg" width="222"
+              height="200" alt="">
+          </div>
+          <div class="item-1">
+            <img src="https://www.bookonatree.com/images/2020/09/16/book_alicia__400x556__400x556.png" width="222"
+              height="200" alt="">
+          </div>
+          <div class="item-1">
+            <img src="https://salt.tikicdn.com/cache/280x280/ts/product/93/68/2e/39030a96e3137f56dacddff1c6522c25.jpg"
+              width="222" height="200" alt="">
+          </div>
+          <div class="item-1">
+            <img src="https://images-na.ssl-images-amazon.com/images/I/71WC3z4Wt0L.jpg" width="222" height="200" alt="">
+          </div>
+          <div class="item-1">
+            <img
+              src="https://m.media-amazon.com/images/S/aplus-media/vc/71b1b1d9-df60-45a0-8997-7878a25f54f4.__CR0,0,150,300_PT0_SX150_V1___.jpg"
+              width="222" height="200" alt="">
+          </div>
+          <div class="item-1">
+            <img src="https://salt.tikicdn.com/ts/product/b2/57/8f/74519d557f0c1e0ce70a810cbf32a5f7.jpg" width="222"
+              height="200" alt="">
+          </div>
+          <!-- <span class="right"><i class="fa fa-angle-right" aria-hidden="true"></i></span> -->
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="mt4">
+    <div class="row">
+      {{#each book}}
+      <div class="col-sm-6 col-lg-4">
+        <div class="card card-book-item">
+          <img src="{{pic}}" class="card-img-top" alt="..." width="128" height="228">
+          <div class="card-body">
+            <td>{{_id}}</td>
+            <h5 class="card-title">{{name}}</h5>
+            <p class="card-text">{{price}}</p>
           </div>
         </div>
-        {{/each}}
       </div>
-    </div> --}}
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="{{image}}" alt="Card image cap" width="100" height="128">
-      <div class="card-body">
-        <h5 class="card-title">{{name}}</h5>
-        <p class="card-text">{{Price}}</p>
-      </div>
+      {{/each}}
     </div>
-
-  <div class="footer">
-    <p>Footer</p>
   </div>
+
+<div class="footer">
+  <p>footer</p>
+</div>
+
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script>
-        $('.your-class').slick({
-                infinite: true,
-                slidesToShow: 5,
-                dots: true,
-                speed: 700,
-                autoplay: true,
-                autoplaySpeed: 2000,
-                responsive: [
-                    {
-                        breakpoint: 769,
-                        settings: {
-                                slidesToShow: 2,
-                                slidesToScroll: 1
-                              }
-                    }
-                ]
-            });
-            
-    </script>
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+  $('.your-class').slick({
+    infinite: true,
+    slidesToShow: 5,
+    dots: true,
+    speed: 700,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    responsive: [
+      {
+        breakpoint: 769,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  });
+
+</script>
+
 </html>
