@@ -1,5 +1,5 @@
 const express = require("express");
-
+const app = express();
 const dbHandler = require("../databaseHandler");
 const router = express.Router();
 router.use(express.static("public"));
@@ -24,11 +24,13 @@ router.use((req, res, next) => {
     }
   });
 
-  
 
 router.get('/index', async (req, res) =>{
+  const { user } = req.session;
+  var passedVariable = req.query.userName;
+  console.log(passedVariable);
   const book = await dbHandler.getAllProducts();
-  res.render('index', { book:book });
+  res.render('index', { book:book,userName:passedVariable, userRole:user.role });
 
 })
 
