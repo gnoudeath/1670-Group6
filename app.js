@@ -5,8 +5,6 @@ const bcrypt = require("bcrypt");
 const dbHandler = require("./databaseHandler");
 
 
-
-
 //Static Files
 app.use(express.static('public'))
 app.use('/css', express.static(__dirname + 'public/css'))
@@ -62,7 +60,7 @@ app.post('/login',async(req,res)=>{
                     }
                     else{
                         // res.render("login", {errorMsg: "Not Login!"});
-                        res.redirect("/homeAdmin")
+                        res.redirect("/admin")
                     }
                 }
             }
@@ -109,7 +107,7 @@ app.post("/register", async(req,res)=>{
 
 const adminController = require('./controllers/admin');
 //tat cac cac dia chi co chua admin: localhost:5000/admin
-app.use('/homeAdmin', adminController)
+app.use('/admin', adminController)
 
 const userController = require("./controllers/customer");
 const { hash } = require('bcrypt');
