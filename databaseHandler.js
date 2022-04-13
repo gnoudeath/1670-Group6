@@ -17,6 +17,12 @@ async function getAllProducts() {
   return allProducts;
 }
 
+async function getAllCategory() {
+  const dbo = await getDB();
+  const allCategory = await dbo.collection("Category").find({}).toArray();
+  return allCategory;
+}
+
 async function insertObject(collectionName, objectToInsert) {
   const dbo = await getDB();
   const newObject = await dbo.collection(collectionName).insertOne(objectToInsert);
@@ -126,6 +132,7 @@ module.exports = {
                   checkUserLogin,
                   getUser,
                   checkUser,
+                  getAllCategory,
                   USERS_TABLE_NAME
                 }
 

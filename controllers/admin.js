@@ -77,4 +77,29 @@ router.post('/updatebook', async (req, res) => {
     res.redirect('/admin/product')
 })
 
+
+router.get('/category', async(req,res)=>{
+    const cat = await dbHandler.getAllCategory();
+    res.render('Admin_Category',{cat:cat})
+})
+
+router.post('/category',async(req,res)=>{
+    const catName = req.body.name;
+    const catDesc = req.body.desc;
+    const newCat = {
+        cat_name:catName,
+        cat_desc:catDesc,
+        
+    }
+    await dbHandler.insertObject("Category", newCat)
+    res.redirect('/admin/category')
+
+})
+
+router.get('/deletecat',async(req,res)=>{
+    const id = req.query.id
+    await dbHandler.deleteDocumentById("Category", id)
+    res.redirect('/admin/category')
+})
+
 module.exports = router;
