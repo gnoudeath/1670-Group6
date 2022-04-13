@@ -24,11 +24,13 @@ router.use((req, res, next) => {
     }
   });
 
+  
 
 router.get('/index', async (req, res) =>{
   const book = await dbHandler.getAllProducts();
-  res.render('index', { data: book });
+  res.render('index', { book:book });
 
 })
+
 
 module.exports = router;
