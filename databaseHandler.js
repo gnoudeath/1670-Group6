@@ -126,6 +126,8 @@ module.exports = {
                   checkUserLogin,
                   getUser,
                   checkUser,
+                  searchObjectbyName,
+                  searchObjectbyPrice,
                   USERS_TABLE_NAME
                 }
 
