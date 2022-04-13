@@ -36,6 +36,7 @@ router.get('/', async (req, res) =>{
 module.exports = router;
 router.get('/product', async (req, res) => {
     const book = await dbHandler.getAllProducts("Book")
+    
     res.render("Admin_Product", {book:book})
     
 });

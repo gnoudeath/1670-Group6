@@ -133,6 +133,8 @@ module.exports = {
                   getUser,
                   checkUser,
                   getAllCategory,
+                  searchObjectbyName,
+                  searchObjectbyPrice,
                   USERS_TABLE_NAME
                 }
 
