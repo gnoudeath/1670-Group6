@@ -113,17 +113,19 @@ async function updateDocument(id, updateValues, collectionName) {
 }
 const USERS_TABLE_NAME = "Users"
 
+
 module.exports = {
-  insertObject,
-  checkUserRole,
-  getDB, getAllProducts,
-  deleteDocumentById,
-  deleteDocument,
-  deleteOne,
-  getDocumentById,
-  updateDocument,
-  checkUserLogin,
-  getUser,
-  checkUser,
-  USERS_TABLE_NAME
-}
+                  insertObject,
+                  checkUserRole,
+                  getDB, getAllProducts,
+                  deleteDocumentById,
+                  deleteDocument,
+                  deleteOne,
+                  getDocumentById,
+                  updateDocument,
+                  checkUserLogin,
+                  getUser,
+                  checkUser,
+                  USERS_TABLE_NAME
+                }
+
