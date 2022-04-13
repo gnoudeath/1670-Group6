@@ -30,7 +30,8 @@ router.get('/index', async (req, res) =>{
   var passedVariable = req.query.userName;
   console.log(passedVariable);
   const book = await dbHandler.getAllProducts();
-  res.render('index', { book:book,userName:passedVariable, userRole:user.role });
+  const cat = await dbHandler.getAllCategory();
+  res.render('index', { book:book,userName:passedVariable, userRole:user.role ,cat:cat });
 
 })
 
