@@ -22,10 +22,10 @@
                                     <tr>
                                         <th>Products ID</th>
                                         <th>Products Name</th>
+                                        <th>Category</th>
                                         <th>Price($)</th>
                                         <th>Image</th>
                                         <th>Description</th>
-                                        <th>Cat</th>
                                         <th>Operation</th>
                                         <th>Operation</th>
                                         
@@ -36,13 +36,13 @@
                                     <tr>
                                         <td>{{_id}}</td>
                                         <td>{{name}}</td>
+                                        <td>{{cat.cat_name}}</td>
                                         <td>{{price}}</td>
                                         <td>
                                             <div class="image"><img style="width: 100px; height: 100px"  src="{{pic}}" alt=""></div>
                                         </td>
                                             <td>{{des}}</td>
                                                 <!-- <td class="Online">Online</td> -->
-                                        <td>{{cat.cat_name}}</td>
                                         <td class="Upadte"> <a href="/admin/updatebook?id={{_id}}">Update</a> </td>
                                         <td class=" Delete"><a href="/admin/deletebook?id={{_id}}">Delete</a> </td>
                                     </tr>
