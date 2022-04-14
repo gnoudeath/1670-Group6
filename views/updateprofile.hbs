@@ -9,6 +9,7 @@
     <title>Profile</title>
 </head>
 <body>
+    <form action="profiles" onsubmit="return confirm('Are you sure?')" method="post">
         <div class="container rounded bg-white mt-5 mb-5">
         <div class="col-md-5 border-right">
             <div class="p-3 py-5">
@@ -23,12 +24,11 @@
                     <div class="col-md-12"><label class="labels">Address</label><input type="text" class="form-control" placeholder="enter address" value="{{user.address}}"></div>
                     <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" placeholder="enter email id" value="{{user.email}}"></div>
                 </div>
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button">
-                    <td class="Upadte"> <a href="/customer/updateprofile?id={{_id}}">Update profile</a> </td>
-                </button></div>
+                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Update Profile</button></div>
             </div>
         </div>
 </div>
+    </form>  
 </div>
 </div>
 </body>
