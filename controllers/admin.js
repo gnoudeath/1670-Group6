@@ -36,6 +36,7 @@ router.get('/', async (req, res) =>{
 module.exports = router;
 router.get('/product', async (req, res) => {
     const book = await dbHandler.getAllProducts("Book")
+    
     res.render("Admin_Product", {book:book})
     
 });
@@ -75,6 +76,47 @@ router.post('/updatebook', async (req, res) => {
     console.log(id)
     await dbHandler.updateDocument(id, UpdateValue,"Book")
     res.redirect('/admin/product')
+})
+
+
+router.get('/category', async(req,res)=>{
+    const cat = await dbHandler.getAllCategory();
+    res.render('Admin_Category',{cat:cat})
+})
+
+router.post('/category',async(req,res)=>{
+    const catName = req.body.name;
+    const catDesc = req.body.desc;
+    const newCat = {
+        cat_name:catName,
+        cat_desc:catDesc,
+        
+    }
+    await dbHandler.insertObject("Category", newCat)
+    res.redirect('/admin/category')
+
+})
+
+router.get('/deletecat',async(req,res)=>{
+    const id = req.query.id
+    await dbHandler.deleteDocumentById("Category", id)
+    res.redirect('/admin/category')
+})
+
+router.get('/updatecat',async(req,res)=>{
+    const id = req.query.id
+    const result = await dbHandler.getDocumentById(id, "Category")
+    const cat = await dbHandler.getAllCategory();
+    res.render('Admin_Category',{cat:cat, result:result})
+})
+
+router.post('/updatecat',async(req,res)=>{
+    const nameCat = req.body.name
+    const descCat = req.body.desc
+    const id = req.body.id
+    const UpdateValue = {$set: {cat_name:nameCat , cat_desc:descCat}}
+    await dbHandler.updateDocument(id, UpdateValue,"Category")
+    res.redirect('/admin/category')
 })
 
 module.exports = router;

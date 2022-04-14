@@ -56,11 +56,11 @@ app.post('/login',async(req,res)=>{
                     console.log("Loged in with: ");
                     console.log(req.session.user);
                     if (role == "Customer"){
-                        res.redirect("/index")
+                        res.redirect("/index/?userName="+req.session.user.name)
                     }
                     else{
                         // res.render("login", {errorMsg: "Not Login!"});
-                        res.redirect("/admin")
+                        res.redirect("/admin/?userName="+req.session.user.name)
                     }
                 }
             }
@@ -74,6 +74,10 @@ app.get('/login',(req,res)=>{
     res.render('login')
 })
 
+app.get("/logout", (req, res) => {
+    req.session.user = null;
+    res.redirect("/");
+  });
 
 app.post("/register", async(req,res)=>{
     const userName = req.body.txtName;
@@ -110,7 +114,7 @@ const adminController = require('./controllers/admin');
 app.use('/admin', adminController)
 
 const userController = require("./controllers/customer");
-const { hash } = require('bcrypt');
+
 app.use("/", userController);
 
 
