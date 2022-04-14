@@ -105,5 +105,8 @@ async function SearchObject(
   }
 }
 
+router.get('/profiles', async (req, res) =>{
+  res.render("profiles");
+});
 
 module.exports = router;

@@ -85,6 +85,9 @@ app.post("/register", async(req,res)=>{
     const pass = req.body.txtPassword;
     const rePass = req.body.txtRePass;
     const email = req.body.txtEmail;
+    const address = req.body.txtAddress;
+    const phone = req.body.txtPhone;
+    const fullname = req.body.txtFullname;
     const hashPass = await bcrypt.hash(pass, 10);
     const exitUser = await dbHandler.checkUserLogin(userName);
     if (exitUser == -1){
@@ -95,6 +98,9 @@ app.post("/register", async(req,res)=>{
                 role: role,
                 password: hashPass,
                 email: email,
+                address: address,
+                phone: phone,
+                fullname: fullname,
             };
             await dbHandler.insertObject("Users", newUser);
             res.render("login");
