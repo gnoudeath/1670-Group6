@@ -104,9 +104,21 @@ async function SearchObject(
     }
   }
 }
-
-router.get('/profiles', async (req, res) =>{
-  res.render("profiles");
+router.get('/profiles', async (req, res) => {
+  const profile = await dbHandler.getUser(req.session.user.name)  
+  res.render("profiles", {user:profile})
 });
 
+
+router.post('/updateprofile', async (req,res) =>{
+  const fullname = req.body.txtFullname;
+  const email = req.body.txtEmail;
+  const address = req.body.txtAddress;
+  const phone = req.body.txtPhone;
+  const user = await dbHandler.getUser(req.session.user.name)
+  const updateValues = {$set: {userName: user.userName, email: email, fullname: fullname,phone: phone, role: user.role, password: user.password, address: address }}
+  console.log(updateValues);
+  await dbHandler.updateDocument(user._id, updateValues, "Users");
+  res.redirect('profiles')
+})
 module.exports = router;
