@@ -104,8 +104,8 @@ a{
   border: 1px red solid;
 }
 
-.card{
+.col{
   display: flex;
-  width: 100%;
+  float: right;
 }
 

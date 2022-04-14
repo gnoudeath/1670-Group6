@@ -40,6 +40,7 @@ router.get('/product', async (req, res) => {
     res.render("Admin_Product", {book:book})
     
 });
+
 //addbook
 router.get('/addbook', async (req, res)=> {
     res.render("AddBook")
