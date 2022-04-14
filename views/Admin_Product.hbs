@@ -25,8 +25,10 @@
                                         <th>Price($)</th>
                                         <th>Image</th>
                                         <th>Description</th>
+                                        <th>Cat</th>
                                         <th>Operation</th>
                                         <th>Operation</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -40,6 +42,7 @@
                                         </td>
                                             <td>{{des}}</td>
                                                 <!-- <td class="Online">Online</td> -->
+                                        <td>{{cat.cat_name}}</td>
                                         <td class="Upadte"> <a href="/admin/updatebook?id={{_id}}">Update</a> </td>
                                         <td class=" Delete"><a href="/admin/deletebook?id={{_id}}">Delete</a> </td>
                                     </tr>
