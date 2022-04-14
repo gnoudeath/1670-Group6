@@ -5,7 +5,8 @@ const router = express.Router();
 router.use(express.static("public"));
 
 const {MongoClient, Int32, Db} = require('mongodb')
-const async = require('hbs/lib/async')
+const async = require('hbs/lib/async');
+const { get } = require("express/lib/response");
 const url = "mongodb+srv://new-duong-0805:123456789td@cluster0.pbe5o.mongodb.net/test";
 const client = new MongoClient(url, {useNewUrlParser: true,useUnifiedTopology: true });
 
@@ -109,8 +110,13 @@ router.get('/profiles', async (req, res) => {
   res.render("profiles", {user:profile})
 });
 
+// router.get('/updateprofile', async(req, res)=>{
+//   const updateprofile = await dbHandler.getDocumentById(id, "Users");
+//   const profile = await dbHandler.getUser();
+//   res.render('updateprofile',{profile:profile, updateprofile:updateprofile})
+// })
 
-router.post('/updateprofile', async (req,res) =>{
+router.post('/profiles', async (req,res) =>{
   const fullname = req.body.txtFullname;
   const email = req.body.txtEmail;
   const address = req.body.txtAddress;
@@ -119,6 +125,23 @@ router.post('/updateprofile', async (req,res) =>{
   const updateValues = {$set: {userName: user.userName, email: email, fullname: fullname,phone: phone, role: user.role, password: user.password, address: address }}
   console.log(updateValues);
   await dbHandler.updateDocument(user._id, updateValues, "Users");
-  res.redirect('profiles')
+  res.redirect('/profiles')
 })
+
+
+// router.get('/updatecat',async(req,res)=>{
+//   const id = req.query.id
+//   const result = await dbHandler.getDocumentById(id, "Category")
+//   const cat = await dbHandler.getAllCategory();
+//   res.render('Admin_Category',{cat:cat, result:result})
+// })
+
+// router.post('/updatecat',async(req,res)=>{
+//   const nameCat = req.body.name
+//   const descCat = req.body.desc
+//   const id = req.body.id
+//   const UpdateValue = {$set: {cat_name:nameCat , cat_desc:descCat}}
+//   await dbHandler.updateDocument(id, UpdateValue,"Category")
+//   res.redirect('/admin/category')
+// })
 module.exports = router;
