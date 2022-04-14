@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+</head>
+<body>
+    <h1>Category</h1>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col" colspan="2">Action</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+      {{#each cat}}
+    <tr>
+      <td>{{cat_name}}</td>
+      <td>{{cat_desc}}</td>
+      <td><a href="/admin/updatecat?id={{_id}}">EDIT</a></td>
+      <td><a href="/admin/deletecat?id={{_id}}">DELETE</a></td>
+      
+    </tr>
+   {{/each}}
+  </tbody>
+</table>
+{{#if result}}
+<form action="/admin/updatecat" method="post">
+    <div class="form-group">
+      <input type="hidden" name="id" value="{{result._id}}">
+    </div>
+    <div class="form-group">
+        
+        Name:<input type="text" name="name" id="name" value="{{result.cat_name}}" class="form-control" placeholder="Input name of category" style="width: 30%;">
+    </div>
+    
+    <div class="form-group">
+    <label for="textarea">Description</label>
+    <textarea class="form-control" id="textarea"   name="desc" rows="3" style="width: 50%;">{{result.cat_desc}}</textarea>
+    </div>
+    
+        <button type="submit" class="btn btn-primary">Update category  </button>
+    
+</form>
+{{else}}
+<form action="/admin/category" method="post">
+    <div class="form-group">
+        
+        Name:<input type="text" name="name" id="name" class="form-control" placeholder="Input name of category" style="width: 30%;">
+    </div>
+    
+    <div class="form-group">
+    <label for="textarea">Description</label>
+    <textarea class="form-control" id="textarea"  name="desc" rows="3" style="width: 50%;"></textarea>
+    </div>
+    
+        <button type="submit" class="btn btn-primary">Add category  </button>
+    
+</form>
+{{/if}}
+
+</body>
+</html>
