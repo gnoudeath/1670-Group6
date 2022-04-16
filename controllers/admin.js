@@ -51,7 +51,7 @@ router.post('/addbook', async (req, res) => {
     const image = req.body.txtImage
     const Description = req.body.txtDescription
     const cat = req.body.cat
-    const catid = await dbHandler.getAllCategory(cat,'Category')
+    const catid = await dbHandler.getDocumentById(cat,'Category')
     const newBook = {name:nameInput, des:Description, price:Number.parseFloat(priceInput), pic:image, cat:catid}
     await dbHandler.insertObject("Book", newBook)
     res.redirect('/admin/product')
@@ -66,7 +66,8 @@ router.get('/deletebook', async (req, res) => {
 router.get('/updatebook', async (req, res) => {
     const id = req.query.id
     const result = await dbHandler.getDocumentById(id, "Book")
-    res.render('updatebook', {book:result})
+    const cat = await dbHandler.getAllCategory();
+    res.render('updatebook', {book:result , cat: cat})
 })
 router.post('/updatebook', async (req, res) => {
     const nameInput = req.body.txtName
@@ -75,7 +76,7 @@ router.post('/updatebook', async (req, res) => {
     const Description = req.body.txtDescription
     const cat = req.body.cat
     const catid = await dbHandler.getDocumentById(cat,'Category')
-    const UpdateValue = {$set: {name:nameInput, des:Description, price:Number.parseFloat(priceInput), pic:image, cat:catid}}
+    const UpdateValue = {$set: {name:nameInput, des:Description, price:Number.parseFloat(priceInput), image:image, cat:catid}}
     const id = req.body.txtid
     console.log(UpdateValue)
     console.log(id)
