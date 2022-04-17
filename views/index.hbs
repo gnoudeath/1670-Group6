@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/css/carosel.css">
+
+    <script type="text/javascript" src="/js/carosel.js"></script>
+
+    <link rel="stylesheet" href="/css/home.css">
+    <script type="text/javascript" src="/js/main.js"></script>
+    <link rel="stylesheet" href="fontawesome_free_5.13.0/css/all.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="/slick/slick-theme.css" />
+    <script type="text/javascript" src="s/lick/slick.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    <script type="text/javascript"
+        src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="favicon_io/site.webmanifest">
+</head>
+
+<body>
+    <!-- code cho nut like share facebook  -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v6.0"></script>
+
+    <!-- header -->
+    <nav class="navbar navbar-expand-md bg-white navbar-light">
+        <div class="container">
+            <!-- logo  -->
+            <img src="https://previews.123rf.com/images/jovanas/jovanas1602/jovanas160201759/52212634-%E6%9C%AC%E3%83%AD%E3%82%B4-%E3%82%B5%E3%82%A4%E3%83%B3%E9%BB%92.jpg" alt="" style="max-width: 90px;">
+            <a class="navbar-brand" href="index.html" style="color: #CF111A;"><b>FPT BOOK STORE</b></a>
+
+            <!-- navbar-toggler  -->
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <!-- form tìm kiếm  -->
+                <form class="form-inline ml-auto my-2 my-lg-0 mr-3">
+                    <div class="input-group" style="width: 520px;">
+                        <input type="text" class="form-control" aria-label="Small"
+                            placeholder="Search books...">
+                        <div class="input-group-append">
+                            <button type="button" class="btn" style="background-color: #CF111A; color: white;">
+                              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/OOjs_UI_icon_search-ltr.svg/1200px-OOjs_UI_icon_search-ltr.svg.png" style="max-width: 20px;" alt="">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- ô đăng nhập đăng ký giỏ hàng trên header  -->
+                <ul class="navbar-nav mb-1 ml-auto">
+                    <div class="dropdown">
+                        <li class="nav-item account" type="button" class="btn dropdown" data-toggle="dropdown">
+                            <img src="https://banner2.cleanpng.com/20180329/zue/kisspng-computer-icons-user-profile-person-5abd85306ff7f7.0592226715223698404586.jpg" style="max-width: 35px;" alt="">
+                            <a class="nav-link text-dark text" href="#" style="display:inline-block">Account: {{userName}}</a>
+                        </li>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width: 85px;">
+                            <h6> Role : {{userRole}}</h4>
+                            <li>
+                              <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="/profiles">Profile</a></li>
+                            <br>
+                            <li><a class="dropdown-item" href="/logout">Log out</a></li>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- thanh "danh muc sach" đã được ẩn bên trong + hotline + ho tro truc tuyen -->
+    <section class="duoinavbar">
+        <div class="container text-white">
+            <div class="row justify">
+                <div class="col-lg-3 col-md-5" style="display: contents;">
+                    <div class="categoryheader">
+                        <div class="noidungheader text-white">
+                            <span class=" font-weight-bold ml-1">
+                              <a href="" style="color: white; font-weight: 700;">Home</a></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="categoryheader">
+                        <div class="noidungheader text-white">
+                            <i class="fa fa-bars"></i>
+                            <span class=" font-weight-bold ml-1">Category</span>
+                        </div>
+                        <!-- CATEGORIES -->
+                        <div class="categorycontent">
+                            <ul>
+                                {{#each cat}}
+                                <li><a class="dropdown-item" href="#">{{cat_name}}</a></li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="categoryheader">
+                        <div class="noidungheader text-white">
+                            <span class=" font-weight-wither ml-1" >
+                              <a href="" style="color: white; font-weight: 700;">History</a></span>
+                        </div>
+                    </div>
+                    <div class="categoryheader">
+                        <div class="noidungheader text-white">
+                            <span class=" font-weight-bold ml-1">
+                              <a href="" style="color: white; font-weight: 700;">Ranking</a></span>
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+                
+                <div class="col-md-5 ml-auto contact d-none d-md-block">
+                    <div class="benphai float-right">
+                        <div class="hotline">
+                            <i class="fa fa-phone"></i>
+                            <span>Hotline:<b>1900 1999</b> </span>
+                        </div>
+                        <i class="fas fa-comments-dollar"></i>
+                        <a href="#">Online Support </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- breadcrumb  -->
+    <section class="breadcrumbbar">
+        <div class="container">
+            <ol class="breadcrumb mb-0 p-0 bg-transparent">
+                <li class="breadcrumb-item"><a href="#">Home Page</a></li>
+                <li class="breadcrumb-item active"><a href="#">New book selection</a></li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- ảnh banner -->
+    <section class="banner">
+        <div class="container">
+            <a href=""><img src="/img/sale.png" alt=""
+                    class="img-fluid" style="width: 1140px; height: 280px;"></a>
+        </div>
+    </section>
+    <div class="container">
+	<div class="row">
+		<div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
+            <div class="MultiCarousel-inner">
+                <div class="item">
+                    <div class="pad15">
+                        <img src="https://salt.tikicdn.com/cache/280x280/ts/product/69/db/a7/66241354830619bdabb22ec630988ab6.jpg"
+              width="145" height="170" alt="">
+                    <div class="abc" style="padding-top: 7px;">
+                        <a href="#" class="btn btn-primary">Add to cart</a>
+                    </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="pad15">
+                        <img src="https://salt.tikicdn.com/cache/280x280/ts/product/45/5b/00/eb18b4683425eb6ccc345818c0fef24a.jpg"
+              width="145" height="170" alt="">
+                    <div class="abc" style="padding-top: 7px;">
+                        <a href="#" class="btn btn-primary">Add to cart</a>
+                    </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="pad15">
+                        <img src="https://www.bigw.com.au/medias/sys_master/images/images/h91/h63/29361456873502.jpg" width="145" height="170" alt="">
+                      <div class="abc" style="padding-top: 7px;">
+                        <a href="#" class="btn btn-primary">Add to cart</a>
+                    </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="pad15">
+                        <img src="https://www.bookonatree.com/images/2020/09/16/book_alicia__400x556__400x556.png" width="145" height="170" alt="">
+                      <div class="abc" style="padding-top: 7px;">
+                        <a href="#" class="btn btn-primary">Add to cart</a>
+                    </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="pad15">
+                        <img src="https://salt.tikicdn.com/cache/280x280/ts/product/93/68/2e/39030a96e3137f56dacddff1c6522c25.jpg" width="145" height="170" alt="">
+                      <div class="abc" style="padding-top: 7px;">
+                        <a href="#" class="btn btn-primary">Add to cart</a>
+                    </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="pad15">
+                        <img src="https://images-na.ssl-images-amazon.com/images/I/71WC3z4Wt0L.jpg" width="145" height="170" alt="">
+                      <div class="abc" style="padding-top: 7px;">
+                        <a href="#" class="btn btn-primary">Add to cart</a>
+                    </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="pad15">
+                        <img src="https://m.media-amazon.com/images/S/aplus-media/vc/71b1b1d9-df60-45a0-8997-7878a25f54f4.__CR0,0,150,300_PT0_SX150_V1___.jpg" width="145" height="170" alt="">
+                      <div class="abc" style="padding-top: 7px;">
+                        <a href="#" class="btn btn-primary">Add to cart</a>
+                    </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="pad15">
+                        <img src="https://salt.tikicdn.com/ts/product/b2/57/8f/74519d557f0c1e0ce70a810cbf32a5f7.jpg" width="145" height="170" alt="">
+                      <div class="abc" style="padding-top: 7px;">
+                        <a href="#" class="btn btn-primary">Add to cart</a>
+                    </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="pad15">
+                        <img src="https://images-na.ssl-images-amazon.com/images/I/81-7CAn6M3L.jpg" width="145" height="170" alt="">
+                      <div class="abc" style="padding-top: 7px;">
+                        <a href="#" class="btn btn-primary">Add to cart</a>
+                    </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="pad15">
+                        <img src="https://www.berghahnbooks.com/covers/Gienow-HechtMusic.jpg" width="145" height="170" alt="">
+                      <div class="abc" style="padding-top: 7px;">
+                        <a href="#" class="btn btn-primary">Add to cart</a>
+                    </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="pad15">
+                        <img src="https://images-na.ssl-images-amazon.com/images/I/81aBhOlPfCL.jpg" width="145" height="170" alt="">
+                      <div class="abc" style="padding-top: 7px;">
+                        <a href="#" class="btn btn-primary">Add to cart</a>
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+            <button class="btn btn-primary leftLst"><</button>
+            <button class="btn btn-primary rightLst">></button>
+        </div>
+	</div>
+</div>
+    <!-- các sản phẩm  -->
+    <section class="content my-4">
+        <div class="container">
+            <div class="noidung bg-white" style=" width: 100%;">
+                <div class="items">
+                    <div class="row">
+                      <div class="col-12 d-flex justify-content-between align-items-center pb-2 bg-transparent pt-4">
+                        <h4 class="header" style="font-weight: 400;">Books ></h1>
+                    </div>
+                        {{#each book}}
+                        <div class="col-lg-3 col-md-4 col-xs-6">
+                            <div class="card">
+                                <a href="/details?id={{_id}}" class="motsanpham"
+                                    style="text-decoration: none; color: black;" data-toggle="tooltip"
+                                    data-placement="bottom" title="Lập Kế Hoạch Kinh Doanh Hiệu Quả">
+                                    <input type="hidden" name = "id" value="">
+                                    <img class="card-img-top anh" src="{{pic}}" alt="lap-ke-hoach-kinh-doanh-hieu-qua" style="height: 350px;">
+                                    <div class="card-body noidungsp mt-3">
+                                        <h6 class="card-title ten">{{name}}</h6>
+                                        <div class="gia d-flex align-items-baseline">
+                                            <div class="giamoi">{{price}} $</div>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="btn btn-primary">Add to cart</a>
+                                </a>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+
+                <!-- pagination bar  -->
+                <div class="pagination-bar my-3">
+                    <div class="row">
+                        <div class="col-12">
+                            <nav>
+                                <ul class="pagination justify-content-center">
+                                    <!-- <li class="page-item disabled">
+                                        <a class="page-link" href="#" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                    </li> -->
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Next">
+                                            <span aria-hidden="true">&rsaquo;</span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+                <!--het khoi san pham-->
+            </div>
+            <!--het div noidung-->
+        </div>
+        <!--het container-->
+    </section>
+
+
+    <!-- thanh cac dich vu :mien phi giao hang, qua tang mien phi ........ -->
+    <section class="abovefooter text-white" style="background-color: #CF111A;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="dichvu d-flex align-items-center">
+                        <img src="/img/icon-books.png" alt="icon-books">
+                        <div class="noidung">
+                            <h6 class="tieude font-weight-bold">MORE THAN 14,000 BEAUTIFUL BOOKS</h6>
+                            <p class="detail">Selected by FPT Book</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="dichvu d-flex align-items-center">
+                        <img src="/img/icon-ship.png" alt="icon-ship">
+                        <div class="noidung">
+                            <h6 class="tieude font-weight-bold">FREE SHIP</h6>
+                            <p class="detail">From $99 in HN</p>
+                            <p class="detail">From 299$ in another city</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="dichvu d-flex align-items-center">
+                        <img src="/img/icon-gift.png" alt="icon-gift">
+                        <div class="noidung">
+                            <h6 class="tieude font-weight-bold">FREE GIFTS</h6>
+                            <p class="detail">Give Bookmarks</p>
+                            <p class="detail">Free book cover</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="dichvu d-flex align-items-center">
+                        <img src="/img/icon-return.png" alt="icon-return">
+                        <div class="noidung">
+                            <h6 class="tieude font-weight-bold">QUICK REFUND</h6>
+                            <p class="detail">Faulty goods can be returned quickly</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- footer  -->
+    <footer>
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-md-3 col-xs-6">
+                    <div class="gioithieu">
+                        <h6 class="header text-uppercase font-weight-bold">About FPT Book Store</h6>
+                        <a href="#">Introduct about DealBook</a>
+                        <div class="fb-like" data-href="https://www.facebook.com/DealBook-110745443947730/"
+                            data-width="300px" data-layout="button" data-action="like" data-size="small"
+                            data-share="true"></div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                    <div class="hotrokh">
+                        <h6 class="header text-uppercase font-weight-bold">CUSTOMER SUPPORT</h6>
+                        <a href="#">Ordering guide</a>
+                        <a href="#">Payment methods</a>
+                        <a href="#">Shipping method</a>
+                        <a href="#">Return Policy</a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                    <div class="lienket">
+                        <h6 class="header text-uppercase font-weight-bold">COOPERATION AND LINKS</h6>
+                        <img src="/img/dang-ky-bo-cong-thuong.png" alt="dang-ky-bo-cong-thuong">
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                    <div class="ptthanhtoan">
+                        <h6 class="header text-uppercase font-weight-bold">Payment methods</h6>
+                        <img src="/img/visa-payment.jpg" alt="visa-payment">
+                        <img src="/img/master-card-payment.jpg" alt="master-card-payment">
+                        <img src="/img/jcb-payment.jpg" alt="jcb-payment">
+                        <img src="/img/atm-payment.jpg" alt="atm-payment">
+                        <img src="/img/cod-payment.jpg" alt="cod-payment">
+                        <img src="/img/payoo-payment.jpg" alt="payoo-payment">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- nut cuon len dau trang -->
+    <div class="fixed-bottom">
+        <div class="btn btn-warning float-right rounded-circle nutcuonlen" id="backtotop" href="#"
+            style="background:#CF111A;"><i class="fa fa-chevron-up text-white"></i></div>
+    </div>
+
+
+</body>
+
+</html>
