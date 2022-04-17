@@ -160,17 +160,17 @@ router.get("/details", async(req, res) =>{
   const result = await dbHandler.getDocumentById(id, "Book");
   const cat = await dbHandler.getAllCategory();
   const { user } = req.session;
-  var passedVariable = req.query.userName;
+  const username = await dbHandler.getUser();
   console.log(result)
   if(!req.session.user){
-    res.render("details", {details: result, cat:cat, userName:passedVariable, userRole:user.role});
+    res.render("details", {details: result, cat:cat, userName:user.Username, userRole:user.role});
   }
   else{
     res.render("details", {
       details: result,
       user: req.session.user,
       cat:cat,
-      userName:passedVariable,
+      username:username,
       userRole:user.role,
     });
   }
