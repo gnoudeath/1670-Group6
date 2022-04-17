@@ -1,5 +1,4 @@
 const express = require("express");
-const app = express();
 const dbHandler = require("../databaseHandler");
 const router = express.Router();
 router.use(express.static("public"));
@@ -158,19 +157,19 @@ router.get('/index', async (req, res) =>{
 router.get("/details", async(req, res) =>{
   const id = req.query.id;
   const result = await dbHandler.getDocumentById(id, "Book");
-  const cat = await dbHandler.getAllCategory();
   const { user } = req.session;
-  const username = await dbHandler.getUser();
   console.log(result)
   if(!req.session.user){
-    res.render("details", {details: result, cat:cat, userName:user.Username, userRole:user.role});
+    res.render("details", {details: result, cat: result.cat, userName:user.name
+      , userRole:user.role});
+      console.log(user)
   }
   else{
     res.render("details", {
       details: result,
       user: req.session.user,
-      cat:cat,
-      username:username,
+      cat:result.cat,
+      userName:user.name,
       userRole:user.role,
     });
   }
