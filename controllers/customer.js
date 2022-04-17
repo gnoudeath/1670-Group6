@@ -144,4 +144,25 @@ router.post('/profiles', async (req,res) =>{
 //   await dbHandler.updateDocument(id, UpdateValue,"Category")
 //   res.redirect('/admin/category')
 // })
+
+router.get('/profiles', async (req, res) => {
+  const profile = await dbHandler.getUser(req.session.user.name)  
+  res.render("profiles", {user:profile})
+});
+
+router.get("/details", async(req, res) =>{
+  const id = req.query.id;
+  const result = await dbHandler.getDocumentById(id, "Book");
+  console.log(result)
+  if(!req.session.user){
+    res.render("details", {details: result});
+  }
+  else{
+    res.render("details", {
+      details: result,
+      user: req.session.user,
+    });
+  }
+});
+
 module.exports = router;

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="li">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/css/products.css">
+    <script type="text/javascript" src="/js/main.js"></script>
+    <link rel="stylesheet" href="fontawesome_free_5.13.0/css/all.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="/slick/slick-theme.css" />
+    <script type="text/javascript" src="/slick/slick.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    <script type="text/javascript"
+        src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+        <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="favicon_io/site.webmanifest">
+</head>
+
+<body>
+       <!-- code cho nut like share facebook  -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v6.0"></script>
+
+    <!-- header -->
+    <nav class="navbar navbar-expand-md bg-white navbar-light">
+        <div class="container">
+            <!-- logo  -->
+            <img src="https://previews.123rf.com/images/jovanas/jovanas1602/jovanas160201759/52212634-%E6%9C%AC%E3%83%AD%E3%82%B4-%E3%82%B5%E3%82%A4%E3%83%B3%E9%BB%92.jpg" alt="" style="max-width: 90px;">
+            <a class="navbar-brand" href="index.html" style="color: #CF111A;"><b>FPT BOOK STORE</b></a>
+
+            <!-- navbar-toggler  -->
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <!-- form tìm kiếm  -->
+                <form class="form-inline ml-auto my-2 my-lg-0 mr-3">
+                    <div class="input-group" style="width: 520px;">
+                        <input type="text" class="form-control" aria-label="Small"
+                            placeholder="Search books...">
+                        <div class="input-group-append">
+                            <button type="button" class="btn" style="background-color: #CF111A; color: white;">
+                              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/OOjs_UI_icon_search-ltr.svg/1200px-OOjs_UI_icon_search-ltr.svg.png" style="max-width: 20px;" alt="">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- ô đăng nhập đăng ký giỏ hàng trên header  -->
+                <ul class="navbar-nav mb-1 ml-auto">
+                    <div class="dropdown">
+                        <li class="nav-item account" type="button" class="btn dropdown" data-toggle="dropdown">
+                            <img src="https://banner2.cleanpng.com/20180329/zue/kisspng-computer-icons-user-profile-person-5abd85306ff7f7.0592226715223698404586.jpg" style="max-width: 35px;" alt="">
+                            <a class="nav-link text-dark text" href="#" style="display:inline-block">Account: {{userName}}</a>
+                        </li>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width: 85px;">
+                            <h6> Role : {{userRole}}</h4>
+                            <li>
+                              <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="/profiles">Profile</a></li>
+                            <br>
+                            <li><a class="dropdown-item" href="/logout">Log out</a></li>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- thanh "danh muc sach" đã được ẩn bên trong + hotline + ho tro truc tuyen -->
+    <section class="duoinavbar">
+        <div class="container text-white">
+            <div class="row justify">
+                <div class="col-lg-3 col-md-5" style="display: contents;">
+                    <div class="categoryheader">
+                        <div class="noidungheader text-white">
+                            <span class=" font-weight-bold ml-1">
+                              <a href="" style="color: white; font-weight: 700;">Home</a></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="categoryheader">
+                        <div class="noidungheader text-white">
+                            <i class="fa fa-bars"></i>
+                            <span class=" font-weight-bold ml-1">Category</span>
+                        </div>
+                        <!-- CATEGORIES -->
+                        <div class="categorycontent">
+                            <ul>
+                                {{#each cat}}
+                                <li><a class="dropdown-item" href="#">{{cat_name}}</a></li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="categoryheader">
+                        <div class="noidungheader text-white">
+                            <span class=" font-weight-wither ml-1" >
+                              <a href="" style="color: white; font-weight: 700;">History</a></span>
+                        </div>
+                    </div>
+                    <div class="categoryheader">
+                        <div class="noidungheader text-white">
+                            <span class=" font-weight-bold ml-1">
+                              <a href="" style="color: white; font-weight: 700;">Ranking</a></span>
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+                
+                <div class="col-md-5 ml-auto contact d-none d-md-block">
+                    <div class="benphai float-right">
+                        <div class="hotline">
+                            <i class="fa fa-phone"></i>
+                            <span>Hotline:<b>1900 1999</b> </span>
+                        </div>
+                        <i class="fas fa-comments-dollar"></i>
+                        <a href="#">Online Support </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- breadcrumb  -->
+        <section class="breadcrumbbar">
+            <div class="container">
+                <ol class="breadcrumb mb-0 p-0 bg-transparent">
+                    <li class="breadcrumb-item"><a href="#">Home Page</a></li>
+                    <li class="breadcrumb-item"><a href="#">Sách kinh tế</a></li>
+                    <li class="breadcrumb-item active"><a href="#">{{Name}}</a></li>
+                </ol>
+            </div>
+        </section>
+
+    <!-- nội dung của trang  -->
+    <section class="product-page mb-4">
+        <div class="container">
+            <!-- chi tiết 1 sản phẩm -->
+            <div class="product-detail bg-white p-4">
+                <div class="row">
+                    <!-- ảnh  -->
+                    <div class="col-md-5 khoianh">
+                        <div class="anhto mb-4">
+                            <a class="active" href="" data-fancybox="thumb-img">
+                                <img class="product-image" src="{{details.pic}}" alt="" style="width: 100%;">
+                            </a>
+                            <a href="{{details.pic}}" data-fancybox="thumb-img"></a>
+                        </div>
+                        <div class="list-anhchitiet d-flex mb-4" style="margin-left: 2rem;">
+                            <img class="thumb-img thumb1 mr-3" src="{{details.pic}}" class="img-fluid" alt="">
+                            <img class="thumb-img thumb2" src="{{details.pic}}" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                    <!-- thông tin sản phẩm: tên, giá bìa giá bán tiết kiệm, các khuyến mãi, nút chọn mua.... -->
+                    <div class="col-md-7 khoithongtin">
+                        <div class="row">
+                            <div class="col-md-12 header">
+                                <h4 class="ten">{{details.name}}</h4>
+                                <div class="rate">
+                                    <i class="fa fa-star active"></i>
+                                    <i class="fa fa-star active"></i>
+                                    <i class="fa fa-star active"></i>
+                                    <i class="fa fa-star active"></i>
+                                    <i class="fa fa-star "></i>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="gia">
+                                    <div class="giaban">Selling price at FPT Book: <br>
+                                    <h1 style="display:contents">999</h1></div>
+                                </div>
+                                
+                                <div class="uudai my-3">
+                                    <h6 class="header font-weight-bold">Promotions and Offers at FPT Book:</h6>
+                                    <ul>
+                                        <li><b>Free ship </b>for orders from $99 in HCMC and $299 in other Provinces/Cities <a href="#">>> Chi tiết</a></li>
+                                        <li><b>HOT book combo - 25% OFF </b><a href="#">>>Watch now</a></li>
+                                        <li>Free Bookmark for every order</li>
+                                        <li>Free book cover</li>
+                                    </ul>
+                                </div>
+                                <div class="soluong d-flex">
+                                    <label class="font-weight-bold">Số lượng: </label>
+                                    <div class="input-number input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text btn-spin btn-dec">-</span>
+                                        </div>
+                                        <input type="text" value="1" class="soluongsp  text-center">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text btn-spin btn-inc">+</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nutmua btn w-100 text-uppercase">Chọn mua</div>
+                                <a class="huongdanmuahang text-decoration-none" href="#">(Vui lòng xem hướng dẫn mua
+                                    hàng)</a>
+                                <small class="share">Share: </small>
+                                <div class="fb-like" data-href="https://www.facebook.com/DealBook-110745443947730/"
+                                    data-width="300px" data-layout="button" data-action="like" data-size="small"
+                                    data-share="true"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- decripstion của 1 sản phẩm: giới thiệu , đánh giá độc giả  -->
+                    <div class="product-description col-md-9">
+                        <!-- 2 tab ở trên  -->
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <a class="nav-item nav-link active text-uppercase" id="nav-gioithieu-tab"
+                                    data-toggle="tab" href="#nav-gioithieu" role="tab" aria-controls="nav-gioithieu"
+                                    aria-selected="true">Giới thiệu</a>
+                                <a class="nav-item nav-link text-uppercase" id="nav-danhgia-tab" data-toggle="tab"
+                                    href="#nav-danhgia" role="tab" aria-controls="nav-danhgia"
+                                    aria-selected="false">Đánh
+                                    giá của độc giả</a>
+                            </div>
+                        </nav>
+                        <!-- nội dung của từng tab  -->
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active ml-3" id="nav-gioithieu" role="tabpanel"
+                                aria-labelledby="nav-gioithieu-tab">
+                                <h6 class="tieude font-weight-bold">Lập Kế Hoạch Kinh Doanh Hiệu Quả</h6>
+                                <p>
+                                    <span>Khi bắt đầu thành lập doanh nghiệp hay mở rộng quy mô hoạt động, lập ra một
+                                        bản kế hoạch kinh doanh là bước đi đầu tiên không thể thiếu. Bản kế hoạch kinh
+                                        doanh càng được chuẩn bị kỹ lưỡng và lôi cuốn bao nhiêu, cơ hội ghi điểm trước
+                                        các nhà đầu tư càng lớn bấy nhiêu. Phải chăng, thông qua bản kế hoạch kinh
+                                        doanh, bạn muốn người đọc:
+                                    </span>
+                                </p>
+                                <p>
+                                    <span>- Đầu tư vào một ý tưởng kinh doanh mới hay một doanh nghiệp đang hoạt
+                                        động?</span>
+                                </p>
+                                <p>
+                                    <span>- Mua lại doanh nghiệp của bạn?</span>
+                                </p>
+                                <p>
+                                    <span>- Tham gia liên doanh với bạn?</span>
+                                </p>
+                                <p>
+                                    <span>- Chấp nhận đề nghị của bạn để thực hiện hợp đồng?</span>
+                                </p>
+                                <p>
+                                    <span>- Cấp cho bạn một khoản hỗ trợ hoặc phê duyệt theo quy định?</span>
+                                </p>
+                                <p>
+                                    <span>- Thuyết phục hội đồng quản trị thay đổi phương hướng hoạt động doanh nghiệp
+                                        của bạn?</span>
+                                </p>
+                                <p>
+                                    <span>Cuốn sách “Lập kế hoạch kinh doanh hiệu quả” sẽ hướng dẫn bạn cách để tạo ra
+                                        bản kế hoạch kinh doanh thu hút mọi tổ chức tài chính, khiến họ phải đáp ứng
+                                        mong muốn của bạn và hỗ trợ bạn tới cùng trong công việc kinh doanh. Thông qua
+                                        cuốn sách, bạn sẽ biết cách:</span>
+                                </p>
+                                <p>
+                                    <span>Tạo ra bản kế hoạch kinh doanh hoàn chỉnh Xây dựng chiến lược hoạt động cho
+                                        doanh nghiệp.</span>
+                                </p>
+                                <p>
+                                    <span>Đưa ra dự báo kinh doanh sát với thực tế.</span>
+                                </p>
+                                <p>
+                                    <span>Nắm rõ các thông tin tài chính ảnh hưởng lớn tới doanh nghiệp.</span>
+                                </p>
+                                <p>
+                                    <span>Trong quá trình xây dựng kế hoạch, việc tham khảo ý kiến chuyên gia là điều
+                                        cần thiết nhưng bạn phải là người đóng góp chính và hiểu tường tận mỗi chi tiết
+                                        có trong đó. Hãy xem việc lập kế hoạch giống như việc truyền đạt câu chuyện của
+                                        mình nhằm thuyết phục người đọc đồng hành cùng bạn trên con đường chinh phục mục
+                                        tiêu kinh doanh.</span>
+                                </p>
+                                <p>
+                                    <span>Bạn chỉ có một cơ hội duy nhất để tạo ấn tượng đầu tiên tốt đẹp. Đừng để nó
+                                        vụt mất. Hãy trình bày một văn bản có tính thuyết phục cao, bố cục đẹp mắt,
+                                        không mắc lỗi chính tả, ngữ pháp, bao gồm các vấn đề trọng tâm và cuối cùng là
+                                        chứa các thông tin bổ trợ cần thiết.</span>
+                                </p>
+                                <p>
+                                    <span>Bằng kiến thức, kinh nghiệm của mình, Brian Finch - một chuyên gia trong lĩnh
+                                        vực tư vấn lập kế hoạch kinh doanh và quản lý tài chính - chắc chắn sẽ giúp bạn
+                                        xây dựng thành công kế hoạch kinh doanh của riêng mình.</span>
+                                </p>
+                            </div>
+                            <div class="tab-pane fade" id="nav-danhgia" role="tabpanel" aria-labelledby="nav-danhgia-tab">
+                                <div class="row">
+                                    <div class="col-md-3 text-center">
+                                        <p class="tieude">Đánh giá trung bình</p>
+                                        <div class="diem">0/5</div>
+                                        <div class="sao">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                        <p class="sonhanxet text-muted">(0 nhận xét)</p>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="tiledanhgia text-center">
+                                            <div class="motthanh d-flex align-items-center">5 <i class="fa fa-star"></i>
+                                                <div class="progress mx-2">
+                                                    <div class="progress-bar" role="progressbar" aria-valuenow="0"
+                                                        aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div> 0%
+                                            </div>
+                                            <div class="motthanh d-flex align-items-center">4 <i class="fa fa-star"></i>
+                                                <div class="progress mx-2">
+                                                    <div class="progress-bar" role="progressbar" aria-valuenow="0"
+                                                        aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div> 0%
+                                            </div>
+                                            <div class="motthanh d-flex align-items-center">3 <i class="fa fa-star"></i>
+                                                <div class="progress mx-2">
+                                                    <div class="progress-bar" role="progressbar" aria-valuenow="0"
+                                                        aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div> 0%
+                                            </div>
+                                            <div class="motthanh d-flex align-items-center">2 <i class="fa fa-star"></i>
+                                                <div class="progress mx-2">
+                                                    <div class="progress-bar" role="progressbar" aria-valuenow="0"
+                                                        aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div> 0%
+                                            </div>
+                                            <div class="motthanh d-flex align-items-center">1 <i class="fa fa-star"></i>
+                                                <div class="progress mx-2">
+                                                    <div class="progress-bar" role="progressbar" aria-valuenow="0"
+                                                        aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div> 0%
+                                            </div>
+                                            <div class="btn vietdanhgia mt-3">Viết đánh giá của bạn</div>
+                                        </div>
+                                        <!-- nội dung của form đánh giá  -->
+                                        <div class="formdanhgia">
+                                            <h6 class="tieude text-uppercase">GỬI ĐÁNH GIÁ CỦA BẠN</h6>
+                                            <span class="danhgiacuaban">Đánh giá của bạn về sản phẩm này:</span>
+                                            <div class="rating d-flex flex-row-reverse align-items-center justify-content-end">
+                                                <input type="radio" name="star" id="star1"><label for="star1"></label>
+                                                <input type="radio" name="star" id="star2"><label for="star2"></label>
+                                                <input type="radio" name="star" id="star3"><label for="star3"></label>
+                                                <input type="radio" name="star" id="star4"><label for="star4"></label>
+                                                <input type="radio" name="star" id="star5"><label for="star5"></label>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="txtFullname w-100" placeholder="Mời bạn nhập tên(Bắt buộc)">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="txtEmail w-100" placeholder="Mời bạn nhập email(Bắt buộc)">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="txtComment w-100" placeholder="Đánh giá của bạn về sản phẩm này">
+                                            </div>
+                                            <div class="btn nutguibl">Gửi bình luận</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <!-- het tab nav-danhgia  -->
+                        </div>
+                        <!-- het tab-content  -->
+                    </div>
+                    <!-- het product-description -->
+                </div>
+                <!-- het row  -->
+            </div>
+            <!-- het product-detail -->
+        </div>
+        <!-- het container  -->
+    </section>
+    <!-- het product-page -->
+
+    <!-- thanh cac dich vu :mien phi giao hang, qua tang mien phi ........ -->
+    <section class="abovefooter text-white" style="background-color: #CF111A;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="dichvu d-flex align-items-center">
+                        <img src="images/icon-books.png" alt="icon-books">
+                        <div class="noidung">
+                            <h6 class="tieude font-weight-bold">HƠN 14.000 TỰA SÁCH HAY</h6>
+                            <p class="detail">Tuyển chọn bởi DealBooks</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="dichvu d-flex align-items-center">
+                        <img src="images/icon-ship.png" alt="icon-ship">
+                        <div class="noidung">
+                            <h6 class="tieude font-weight-bold">MIỄN PHÍ GIAO HÀNG</h6>
+                            <p class="detail">Từ 150.000đ ở TP.HCM</p>
+                            <p class="detail">Từ 300.000đ ở tỉnh thành khác</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="dichvu d-flex align-items-center">
+                        <img src="images/icon-gift.png" alt="icon-gift">
+                        <div class="noidung">
+                            <h6 class="tieude font-weight-bold">QUÀ TẶNG MIỄN PHÍ</h6>
+                            <p class="detail">Tặng Bookmark</p>
+                            <p class="detail">Bao sách miễn phí</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="dichvu d-flex align-items-center">
+                        <img src="images/icon-return.png" alt="icon-return">
+                        <div class="noidung">
+                            <h6 class="tieude font-weight-bold">ĐỔI TRẢ NHANH CHÓNG</h6>
+                            <p class="detail">Hàng bị lỗi được đổi trả nhanh chóng</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- het .abovefooter  -->
+
+    <!-- footer  -->
+    <footer>
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-md-3 col-xs-6">
+                    <div class="gioithieu">
+                        <h6 class="header text-uppercase font-weight-bold">Về DealBook</h6>
+                        <a href="#">Giới thiệu về DealBook</a>
+                        <a href="#">Tuyển dụng</a>
+                        <div class="fb-like" data-href="https://www.facebook.com/DealBook-110745443947730/"
+                            data-width="300px" data-layout="button" data-action="like" data-size="small"
+                            data-share="true"></div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                    <div class="hotrokh">
+                        <h6 class="header text-uppercase font-weight-bold">HỖ TRỢ KHÁCH HÀNG</h6>
+                        <a href="#">Hướng dẫn đặt hàng</a>
+                        <a href="#">Phương thức thanh toán</a>
+                        <a href="#">Phương thức vận chuyển</a>
+                        <a href="#">Chính sách đổi trả</a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                    <div class="lienket">
+                        <h6 class="header text-uppercase font-weight-bold">HỢP TÁC VÀ LIÊN KẾT</h6>
+                        <img src="images/dang-ky-bo-cong-thuong.png" alt="dang-ky-bo-cong-thuong">
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                    <div class="ptthanhtoan">
+                        <h6 class="header text-uppercase font-weight-bold">Phương thức thanh toán</h6>
+                        <img src="images/visa-payment.jpg" alt="visa-payment">
+                        <img src="images/master-card-payment.jpg" alt="master-card-payment">
+                        <img src="images/jcb-payment.jpg" alt="jcb-payment">
+                        <img src="images/atm-payment.jpg" alt="atm-payment">
+                        <img src="images/cod-payment.jpg" alt="cod-payment">
+                        <img src="images/payoo-payment.jpg" alt="payoo-payment">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- nut cuon len dau trang -->
+    <div class="fixed-bottom">
+        <div class="btn btn-warning float-right rounded-circle nutcuonlen" id="backtotop" href="#" style="background:#CF111A;"><i
+                class="fa fa-chevron-up text-white"></i></div>
+    </div>
+
+
+</body>
+
+</html>
