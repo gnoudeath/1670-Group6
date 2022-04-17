@@ -145,22 +145,33 @@ router.post('/profiles', async (req,res) =>{
 //   res.redirect('/admin/category')
 // })
 
-router.get('/profiles', async (req, res) => {
-  const profile = await dbHandler.getUser(req.session.user.name)  
-  res.render("profiles", {user:profile})
-});
+router.get('/index', async (req, res) =>{
+  const { user } = req.session;
+  var passedVariable = req.query.userName;
+  console.log(passedVariable);
+  const book = await dbHandler.getAllProducts();
+  const cat = await dbHandler.getAllCategory();
+  res.render('index', { book:book,userName:passedVariable, userRole:user.role ,cat:cat });
+
+})
 
 router.get("/details", async(req, res) =>{
   const id = req.query.id;
   const result = await dbHandler.getDocumentById(id, "Book");
+  const cat = await dbHandler.getAllCategory();
+  const { user } = req.session;
+  var passedVariable = req.query.userName;
   console.log(result)
   if(!req.session.user){
-    res.render("details", {details: result});
+    res.render("details", {details: result, cat:cat, userName:passedVariable, userRole:user.role});
   }
   else{
     res.render("details", {
       details: result,
       user: req.session.user,
+      cat:cat,
+      userName:passedVariable,
+      userRole:user.role,
     });
   }
 });

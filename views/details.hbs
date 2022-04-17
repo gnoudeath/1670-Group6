@@ -35,17 +35,13 @@
 </head>
 
 <body>
-       <!-- code cho nut like share facebook  -->
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous"
-        src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v6.0"></script>
 
     <!-- header -->
     <nav class="navbar navbar-expand-md bg-white navbar-light">
         <div class="container">
             <!-- logo  -->
             <img src="https://previews.123rf.com/images/jovanas/jovanas1602/jovanas160201759/52212634-%E6%9C%AC%E3%83%AD%E3%82%B4-%E3%82%B5%E3%82%A4%E3%83%B3%E9%BB%92.jpg" alt="" style="max-width: 90px;">
-            <a class="navbar-brand" href="index.html" style="color: #CF111A;"><b>FPT BOOK STORE</b></a>
+            <a class="navbar-brand" href="/index" style="color: #CF111A;"><b>FPT BOOK STORE</b></a>
 
             <!-- navbar-toggler  -->
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
@@ -72,7 +68,7 @@
                     <div class="dropdown">
                         <li class="nav-item account" type="button" class="btn dropdown" data-toggle="dropdown">
                             <img src="https://banner2.cleanpng.com/20180329/zue/kisspng-computer-icons-user-profile-person-5abd85306ff7f7.0592226715223698404586.jpg" style="max-width: 35px;" alt="">
-                            <a class="nav-link text-dark text" href="#" style="display:inline-block">Account: {{userName}}</a>
+                            <a class="nav-link text-dark text" href="#" style="display:inline-block">Account: {{userName}} </a>
                         </li>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width: 85px;">
                             <h6> Role : {{userRole}}</h4>
@@ -150,9 +146,9 @@
         <section class="breadcrumbbar">
             <div class="container">
                 <ol class="breadcrumb mb-0 p-0 bg-transparent">
-                    <li class="breadcrumb-item"><a href="#">Home Page</a></li>
-                    <li class="breadcrumb-item"><a href="#">Sách kinh tế</a></li>
-                    <li class="breadcrumb-item active"><a href="#">{{Name}}</a></li>
+                    <li class="breadcrumb-item"><a href="/index">Home Page</a></li>
+                    <li class="breadcrumb-item"><a href="#">{{category.cat_name}}</a></li>
+                    <li class="breadcrumb-item active"><a href="#">{{details.name}}</a></li>
                 </ol>
             </div>
         </section>
@@ -187,7 +183,7 @@
                                 <div class="uudai my-3">
                                     <h6 class="header font-weight-bold">Promotions and Offers at FPT Book:</h6>
                                     <ul>
-                                        <li><b>Free ship </b>for orders from $99 in HCMC and $299 in other Provinces/Cities <a href="#">>> Chi tiết</a></li>
+                                        <li><b>Free ship </b>for orders from $99 in Ha Noi and $299 in other Provinces/Cities</li>
                                         <li><b>HOT book combo - 25% OFF </b><a href="#">>>Watch now</a></li>
                                         <li>Free Bookmark for every order</li>
                                         <li>Free book cover</li>
