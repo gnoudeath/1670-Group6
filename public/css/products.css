@@ -279,6 +279,8 @@ label.error {
 .benphai.float-right {
     line-height: 40px;
     font-size: 14px;
+    margin-top: 15px;
+    margin-right: -175px;
 }
 
 .noidungheader {
@@ -536,9 +538,8 @@ footer .header {
 }
 
 .product-detail .thumb-img {
-    height: 100%;
-    width: 74px;
     border: 1px solid #F2F2F2;
+    
 }
 
 .product-detail .list-anhchitiet {
@@ -1085,8 +1086,11 @@ h3.account-header {
 
 
 .col-md-5{
-    margin-top: -55px;
+    margin-top: -15px;
     margin-left: auto;
     margin-right: auto;
 }
 
+.product-image{
+    width: 350px;
+}
