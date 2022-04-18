@@ -175,4 +175,34 @@ router.get("/details", async(req, res) =>{
   }
 });
 
+router.post('/details',async(req,res)=>{
+  const id = req.body.id
+  const book = await dbHandler.getDocumentById(id,"Book")
+  const quantity = req.body.quantity
+  const total = quantity * book.price
+  const status = "Processing"
+  const username = req.session.user.name
+  const user = await dbHandler.getUser(username)
+  var today = new Date()
+  var time = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear()+ '-' + today.getHours() + ":" + today.getMinutes();
+  const newOrder = {
+    user:user.userName,
+    book:book,
+    quantity:quantity,
+    date:time,
+    total_money:total,
+    status:status
+
+  }
+  
+  await dbHandler.insertObject("CustomerOrder",newOrder)
+  res.redirect('/purchasehistory')
+})
+
+router.get('/purchasehistory',async(req,res)=>{
+  const order = await dbHandler.findOrder(req.session.user.name)
+
+  res.render('purchasehistory',{order:order})
+})
+
 module.exports = router;
