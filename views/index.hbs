@@ -59,15 +59,15 @@
 
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <!-- form tìm kiếm  -->
-                <form class="form-inline ml-auto my-2 my-lg-0 mr-3">
+                <form action="/search?=" class="search-form" method="get" class="form-inline ml-auto my-2 my-lg-0 mr-3"  >
                     <div class="input-group" style="width: 520px;">
-                        <input type="text" class="form-control" aria-label="Small"
+                        <input type="search" name="searchInput" id="searchInput" class="form-control" aria-label="Small"
                             placeholder="Search books...">
                         <div class="input-group-append">
-                            <button type="button" class="btn" style="background-color: #CF111A; color: white;">
+                            <a href="/search"><button type="btn-search" class="btn" style="background-color: #CF111A; color: white;">
                               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/OOjs_UI_icon_search-ltr.svg/1200px-OOjs_UI_icon_search-ltr.svg.png" style="max-width: 20px;" alt="">
                                 <i class="fa fa-search"></i>
-                            </button>
+                            </button></a>
                         </div>
                     </div>
                 </form>
