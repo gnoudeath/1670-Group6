@@ -1,7 +1,7 @@
 const async = require('hbs/lib/async');
 const { MongoClient, ObjectId } = require('mongodb');
 
-const URL = 'mongodb+srv://new-duong-0805:123456789td@cluster0.pbe5o.mongodb.net/test'
+const URL = 'mongodb+srv://new-duong-0805:123456789td@cluster0.pbe5o.mongodb.net/Test'
 const DATABASE_NAME = "Test"
 
 async function getDB() {
@@ -118,6 +118,11 @@ async function updateDocument(id, updateValues, collectionName) {
     .updateOne({ _id: ObjectId(id) }, updateValues);
 }
 
+async function findOrder(name) {
+  const dbo = await getDB();
+  const result = await dbo.collection("CustomerOrder").find({ user:name }).toArray();
+  return result;
+}
 async function getAllOrder() {
   const dbo = await getDB();
   const allOrder = await dbo.collection("Order").find({}).toArray();
@@ -143,6 +148,7 @@ module.exports = {
                   getAllCategory,
                   searchObjectbyName,
                   searchObjectbyPrice,
+                  findOrder,
                   getAllOrder,
                   USERS_TABLE_NAME
                 }
