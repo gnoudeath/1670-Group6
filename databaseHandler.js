@@ -117,6 +117,14 @@ async function updateDocument(id, updateValues, collectionName) {
     .collection(collectionName)
     .updateOne({ _id: ObjectId(id) }, updateValues);
 }
+
+async function getAllOrder() {
+  const dbo = await getDB();
+  const allOrder = await dbo.collection("Order").find({}).toArray();
+  return allOrder;
+}
+
+
 const USERS_TABLE_NAME = "Users"
 
 
@@ -135,6 +143,7 @@ module.exports = {
                   getAllCategory,
                   searchObjectbyName,
                   searchObjectbyPrice,
+                  getAllOrder,
                   USERS_TABLE_NAME
                 }
 

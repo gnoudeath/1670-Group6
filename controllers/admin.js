@@ -8,6 +8,7 @@ const bcrypt = require("bcrypt");
 
 const {MongoClient, Int32, Db} = require('mongodb')
 const async = require('hbs/lib/async')
+const { route } = require('./customer')
 const url = "mongodb+srv://new-duong-0805:123456789td@cluster0.pbe5o.mongodb.net/test";
 const client = new MongoClient(url, {useNewUrlParser: true,useUnifiedTopology: true });
 
@@ -27,7 +28,8 @@ router.get('/', async (req, res) =>{
     const client = await MongoClient.connect(url);
     const dbo = client.db("Test");
     const allProducts = await dbo.collection("Book").find({}).toArray();
-    res.render('homeAdmin', { data: allProducts});
+    const order = await dbHandler.getAllOrder();
+    res.render('homeAdmin', { data: allProducts , order:order});
     
 })
 
