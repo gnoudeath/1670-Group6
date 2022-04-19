@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="li">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/css/feedback.css">
+
+    <script type="text/javascript" src="/js/main.js"></script>
+    <link rel="stylesheet" href="fontawesome_free_5.13.0/css/all.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="/slick/slick-theme.css" />
+    <script type="text/javascript" src="/slick/slick.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    <script type="text/javascript"
+        src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+        <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="favicon_io/site.webmanifest">
+</head>
+
+<body>
+
+    <!-- header -->
+    <nav class="navbar navbar-expand-md bg-white navbar-light">
+        <div class="container">
+            <!-- logo  -->
+            <img src="https://previews.123rf.com/images/jovanas/jovanas1602/jovanas160201759/52212634-%E6%9C%AC%E3%83%AD%E3%82%B4-%E3%82%B5%E3%82%A4%E3%83%B3%E9%BB%92.jpg" alt="" style="max-width: 90px;">
+            <a class="navbar-brand" href="#" onclick="returnback()" style="color: #CF111A;"><b>FPT BOOK STORE</b></a>
+
+            <!-- navbar-toggler  -->
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <!-- form tìm kiếm  -->
+                <form class="form-inline ml-auto my-2 my-lg-0 mr-3">
+                    <div class="input-group" style="width: 520px;">
+                        <input type="text" class="form-control" aria-label="Small"
+                            placeholder="Search books...">
+                        <div class="input-group-append">
+                            <button type="button" class="btn" style="background-color: #CF111A; color: white;">
+                              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/OOjs_UI_icon_search-ltr.svg/1200px-OOjs_UI_icon_search-ltr.svg.png" style="max-width: 20px;" alt="">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- ô đăng nhập đăng ký giỏ hàng trên header  -->
+
+            </div>
+        </div>
+    </nav>
+    
+    <!-- thanh "danh muc sach" đã được ẩn bên trong + hotline + ho tro truc tuyen -->
+   
+
+    <!-- breadcrumb  -->
+        <section class="product-page mb-4">
+        <div class="container">
+            <!-- chi tiết 1 sản phẩm -->
+
+   
+                    <div class="product-description col-md-9">
+                        <!-- 2 tab ở trên  -->
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <a class="nav-item nav-link text-uppercase" id="nav-danhgia-tab" data-toggle="tab"
+                                    href="#nav-danhgia" role="tab" aria-controls="nav-danhgia"
+                                    aria-selected="false">Feedback</a>
+                            </div>
+                        </nav>
+                        <!-- nội dung của từng tab  -->
+                        <div class="tab-content" id="nav-tabContent">
+
+                            <hr>
+                            <table class="tabled">
+                                <thead>
+                                <th>Username</th>
+                                <th>Product</th>
+                                <th>Feedback</th>
+                                </thead>
+                                <tbody>
+                                {{#each list}}
+                                <tr>
+                                    <td>{{username}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{feedback}}</td>
+                                </tr>
+                                {{/each}}
+                                </tbody>
+                            </table>
+                            <!-- het tab nav-danhgia  -->
+                        </div>
+                        <!-- het tab-content  -->
+                    </div>
+                    <!-- het product-description -->
+                </div>
+                <!-- het row  -->
+            </div>
+            <!-- het product-detail -->
+        </div>
+        <!-- het container  -->
+    </section>
+    <!-- het product-page -->
+
+    <!-- thanh cac dich vu :mien phi giao hang, qua tang mien phi ........ -->
+    
+
+    <!-- nut cuon len dau trang -->
+    <div class="fixed-bottom">
+        <div class="btn btn-warning float-right rounded-circle nutcuonlen" id="backtotop" href="#"
+            style="background:#CF111A;"><i class="fa fa-chevron-up text-white"></i></div>
+    </div>
+
+<script>
+    function returnback(){history.back();}
+</script>
+</body>
+
+</html>
