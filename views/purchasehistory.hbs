@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html lang="vi">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
@@ -14,44 +12,32 @@
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="/css/carosel.css">
-
-    <script type="text/javascript" src="/js/carosel.js"></script>
-
-    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/products.css">
     <script type="text/javascript" src="/js/main.js"></script>
     <link rel="stylesheet" href="fontawesome_free_5.13.0/css/all.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="/slick/slick-theme.css" />
-    <script type="text/javascript" src="s/lick/slick.min.js"></script>
+    <script type="text/javascript" src="/slick/slick.min.js"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
     <script type="text/javascript"
         src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
-
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
     <link rel="manifest" href="favicon_io/site.webmanifest">
 </head>
-
-
 <body>
-<!-- code cho nut like share facebook  -->
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous"
-        src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v6.0"></script>
-
-    <!-- header -->
-    <nav class="navbar navbar-expand-md bg-white navbar-light">
+        <nav class="navbar navbar-expand-md bg-white navbar-light">
         <div class="container">
             <!-- logo  -->
             <img src="https://previews.123rf.com/images/jovanas/jovanas1602/jovanas160201759/52212634-%E6%9C%AC%E3%83%AD%E3%82%B4-%E3%82%B5%E3%82%A4%E3%83%B3%E9%BB%92.jpg" alt="" style="max-width: 90px;">
-            <a class="navbar-brand" href="/" style="color: #CF111A;"><b>FPT BOOK STORE</b></a>
+            <a class="navbar-brand" href="/index" style="color: #CF111A;"><b>FPT BOOK STORE</b></a>
 
             <!-- navbar-toggler  -->
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
@@ -60,15 +46,15 @@
 
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <!-- form tìm kiếm  -->
-                <form action="/search?=" class="search-form" method="get" class="form-inline ml-auto my-2 my-lg-0 mr-3"  >
+                <form class="form-inline ml-auto my-2 my-lg-0 mr-3">
                     <div class="input-group" style="width: 520px;">
-                        <input type="search" name="searchInput" id="searchInput" class="form-control" aria-label="Small"
+                        <input type="text" class="form-control" aria-label="Small"
                             placeholder="Search books...">
-                        <div class="input-group-a   ppend">
-                            <a href="/search"><button type="btn-search" class="btn" style="background-color: #CF111A; color: white;">
+                        <div class="input-group-append">
+                            <button type="button" class="btn" style="background-color: #CF111A; color: white;">
                               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/OOjs_UI_icon_search-ltr.svg/1200px-OOjs_UI_icon_search-ltr.svg.png" style="max-width: 20px;" alt="">
                                 <i class="fa fa-search"></i>
-                            </button></a>
+                            </button>
                         </div>
                     </div>
                 </form>
@@ -78,7 +64,7 @@
                     <div class="dropdown">
                         <li class="nav-item account" type="button" class="btn dropdown" data-toggle="dropdown">
                             <img src="https://banner2.cleanpng.com/20180329/zue/kisspng-computer-icons-user-profile-person-5abd85306ff7f7.0592226715223698404586.jpg" style="max-width: 35px;" alt="">
-                            <a class="nav-link text-dark text" href="#" style="display:inline-block">Account: {{userName}}</a>
+                            <a class="nav-link text-dark text" href="#" style="display:inline-block">Account: {{userName}} </a>
                         </li>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width: 85px;">
                             <h6> Role : {{userRole}}</h4>
@@ -94,8 +80,7 @@
             </div>
         </div>
     </nav>
-
-
+    
     <!-- thanh "danh muc sach" đã được ẩn bên trong + hotline + ho tro truc tuyen -->
     <section class="duoinavbar">
         <div class="container text-white">
@@ -152,101 +137,46 @@
             </div>
         </div>
     </section>
-    <section class="content my-4">
-        <div class="container">
-            <div class="noidung bg-white" style=" width: 100%;">
-                <div class="items">
-                    <div class="row">
-                      <div class="col-12 d-flex justify-content-between align-items-center pb-2 bg-transparent pt-4">
-                    </div>
-                        {{#each searchBook}}
-                        <div class="col-lg-3 col-md-4 col-xs-6">
-                            <div class="card">
-                                <a href="/details?id={{_id}}" class="motsanpham"
-                                    style="text-decoration: none; color: black;" data-toggle="tooltip"
-                                    data-placement="bottom" title="Lập Kế Hoạch Kinh Doanh Hiệu Quả">
-                                    <input type="hidden" name = "id" value="">
-                                    <img class="card-img-top anh" src="{{pic}}" alt="lap-ke-hoach-kinh-doanh-hieu-qua" style="height: 350px;">
-                                    <div class="card-body noidungsp mt-3">
-                                        <h6 class="card-title ten">{{name}}</h6>
-                                        <div class="gia d-flex align-items-baseline">
-                                            <div class="price">{{price}} $</div>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="btn btn-primary">Add to cart</a>
-                                </a>
-                            </div>
-                        </div>
-                        {{/each}}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    {{!-- <div class="container">
+    
+    <div class="container">
+        <br>
+    <h2 class="text-success border-top border-bottom border-sucess " >Purchase History</h2>
 
-        <div class="products-container">
-            {{#each searchBook}}    
-            <div class="product" data-name="p-1">
-                <img src="{{pic}}" alt="">
-                <h3>{{name}}</h3>
-                <div class="price">{{price}}$</div>
-            </div>
-            {{/each}}
-        </div>
+        <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">Image</th>
+        <th scope="col">Name</th>
+        <th scope="col">Cat</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Total Money</th>
+        <th scope="col">Date</th>
+        
+        <th scope="col">Status</th>
+        <th scope="col">Request</th>
 
-    </div> --}}
-    {{!-- </div> --}}
-
-    </div>
-     <!-- thanh cac dich vu :mien phi giao hang, qua tang mien phi ........ -->
-    <section class="abovefooter text-white" style="background-color: #CF111A;">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-sm-6">
-                    <div class="dichvu d-flex align-items-center">
-                        <img src="/img/icon-books.png" alt="icon-books">
-                        <div class="noidung">
-                            <h6 class="tieude font-weight-bold">MORE THAN 14,000 BEAUTIFUL BOOKS</h6>
-                            <p class="detail">Selected by FPT Book</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="dichvu d-flex align-items-center">
-                        <img src="/img/icon-ship.png" alt="icon-ship">
-                        <div class="noidung">
-                            <h6 class="tieude font-weight-bold">FREE SHIP</h6>
-                            <p class="detail">From $99 in HN</p>
-                            <p class="detail">From 299$ in another city</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="dichvu d-flex align-items-center">
-                        <img src="/img/icon-gift.png" alt="icon-gift">
-                        <div class="noidung">
-                            <h6 class="tieude font-weight-bold">FREE GIFTS</h6>
-                            <p class="detail">Give Bookmarks</p>
-                            <p class="detail">Free book cover</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="dichvu d-flex align-items-center">
-                        <img src="/img/icon-return.png" alt="icon-return">
-                        <div class="noidung">
-                            <h6 class="tieude font-weight-bold">QUICK REFUND</h6>
-                            <p class="detail">Faulty goods can be returned quickly</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- footer  -->
-    <footer>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each order}}
+        <tr>
+            <td><img src="{{book.pic}}" alt="" style="width: 100px;"></td>
+            <td>{{book.name}}</td>
+            <td>{{book.cat.cat_name}}</td>
+            <td>{{book.price}}</td>
+            <td>{{quantity}}</td>
+            <td>{{total_money}}</td>
+            <td>{{date}}</td>
+            
+            <td>{{status}}</td>
+            <td><button type="button" class="btn btn-primary"><a href="#"></a>Cancel</button></td>
+        </tr>
+        
+        {{/each}}
+    </tbody>
+    </table>
+        <footer>
         <div class="container py-4">
             <div class="row">
                 <div class="col-md-3 col-xs-6">
@@ -287,11 +217,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- nut cuon len dau trang -->
-    <div class="fixed-bottom">
-        <div class="btn btn-warning float-right rounded-circle nutcuonlen" id="backtotop" href="#"
-            style="background:#CF111A;"><i class="fa fa-chevron-up text-white"></i></div>
     </div>
 </body>
 </html>

@@ -187,19 +187,22 @@
                                         <li>Free book cover</li>
                                     </ul>
                                 </div>
+                                <form action="/details" method="POST">
                                 <div class="soluong d-flex">
                                     <label class="font-weight-bold">Quantity: </label>
                                     <div class="input-number input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text btn-spin btn-dec">-</span>
                                         </div>
-                                        <input type="text" value="1" class="soluongsp  text-center">
+                                        <input type="hidden" name="id" value="{{details._id}}">
+                                        <input type="text" value="1" class="soluongsp  text-center" name="quantity">
                                         <div class="input-group-append">
                                             <span class="input-group-text btn-spin btn-inc">+</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="nutmua btn w-100 text-uppercase">Buy now!</div>
+                                <button type="submit" class="nutmua btn w-100 text-uppercase">Buy now!</button>
+                                </form>
                             </div>
                         </div>
                     </div>
