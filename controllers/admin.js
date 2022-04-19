@@ -25,11 +25,12 @@ router.use((req, res, next) => {
 
 router.get('/', async (req, res) =>{
     
-    const client = await MongoClient.connect(url);
-    const dbo = client.db("Test");
-    const allProducts = await dbo.collection("Book").find({}).toArray();
+    // const client = await MongoClient.connect(url);
+    // const dbo = client.db("Test");
+    // const allProducts = await dbo.collection("Book").find({}).toArray();
     const orderCustomer = await dbHandler.getAllOrderCustomer();
-    res.render('homeAdmin', { data: allProducts , orderCustomer:orderCustomer});
+    
+    res.render('homeAdmin', {  orderCustomer:orderCustomer});
 })
 
 
