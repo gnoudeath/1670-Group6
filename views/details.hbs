@@ -232,43 +232,37 @@
                                 <div class="row">
                                     <div class="col-md-5">
                                         <div class="tiledanhgia text-center">
-                                            <div class="btn vietdanhgia mt-3">Write your feedback</div>
+                                            <div class="btn vietdanhgia mt-3">
+                                                Write your feedback
+                                            </div>
                                         </div>
                                         <!-- nội dung của form đánh giá  -->
                                         <form action="/feedback" method="post">
                                             <div class="formdanhgia">
                                             <h6 class="tieude text-uppercase">SEND YOUR FEEDBACK</h6>
                                             <span class="danhgiacuaban">Your feedback on this product:</span>
+                                            <input type="text" name="name" value="{{details.name}}" hidden>
                                             <div class="form-group">
+                                                
                                                 <input type="text" class="txtComment w-100" name="feedback" placeholder="Your feedback on this product">
                                             </div>
                                             <div class="btn nutguibl" >
                                                 <input type="submit" value="Submit">
                                             </div>
+
+                                            
+                                            
+                                            <a href="/feedback?name={{details.name}}">All feedback</a>
                                         </div>
                                         </form>
+
+                                        
                                         
                                     </div>
                                 </div>
                             </div>
                             <hr>
-                            <table>
-                                <thead>
-                                <th>Username</th>
-                                <th>Product</th>
-                                <th>Feedback</th>
-                                </thead>
-                                <tbody>
-                                {{#each list}}
-                                <tr>
-                                    <td>{{username}}</td>
-                                    <td>{{name}}</td>
-                                    <td>{{feedback}}</td>
 
-                                </tr>
-                                {{/each}}
-                                </tbody>
-                            </table>
                             <!-- het tab nav-danhgia  -->
                         </div>
                         <!-- het tab-content  -->

@@ -175,27 +175,6 @@ router.get("/details", async(req, res) =>{
   }
 });
 
-router.get("feedback", async (req, res) =>{
-  const result = await dbHandler.getAllFB("Feedback");
-  const arr = [];
-  result.forEach(f => {
-    if (req.query.name === f.name) {
-      arr.push(f);
-    }
-  })
-  res.render("details", {query: req.query.name, list: arr}); //truyen gia tri cua book
-});
-
-router.post("feedback", (req, res) =>{
-  const bod = {
-    ...req.body,
-    username: req.session.user.name,
-    time: new Date().toISOString(),
-  };
-  dbHandler.insertObject("Feedback", bod);
-  res.redirect("details")
-});
-
 router.post('/details',async(req,res)=>{
   const id = req.body.id
   const book = await dbHandler.getDocumentById(id,"Book")
@@ -226,5 +205,27 @@ router.get('/purchasehistory',async(req,res)=>{
   res.render('purchasehistory',{order:order})
 })
 
+
+
+router.get("/feedback", async (req, res) =>{
+  const result = await dbHandler.getAllFB("Feedback");
+  const arr = [];
+  result.forEach(f => {
+    if (req.query.name === f.name) {
+      arr.push(f);
+    }
+  })
+  res.render("feedback", {list: arr}); //truyen gia tri cua book
+});
+
+router.post("/feedback", (req, res) =>{
+  const bod = {
+    ...req.body,
+    username: req.session.user.name,
+    time: new Date().toISOString(),
+  };
+  dbHandler.insertObject("Feedback", bod);
+  res.redirect("back")
+});
 
 module.exports = router;

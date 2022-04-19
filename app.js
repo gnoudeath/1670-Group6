@@ -121,6 +121,8 @@ app.use('/admin', adminController)
 
 const userController = require("./controllers/customer");
 
+
+
 app.use("/", userController);
 
 
