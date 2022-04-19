@@ -6,6 +6,7 @@ router.use(express.static("public"));
 const {MongoClient, Int32, Db} = require('mongodb')
 const async = require('hbs/lib/async');
 const { get } = require("express/lib/response");
+const req = require("express/lib/request");
 const url = "mongodb+srv://new-duong-0805:123456789td@cluster0.pbe5o.mongodb.net/test";
 const client = new MongoClient(url, {useNewUrlParser: true,useUnifiedTopology: true });
 
@@ -160,8 +161,7 @@ router.get("/details", async(req, res) =>{
   const { user } = req.session;
   console.log(result)
   if(!req.session.user){
-    res.render("details", {details: result, cat: result.cat, userName:user.name
-      , userRole:user.role});
+    res.render("details", {details: result, cat: result.cat, userName:user.name, userRole:user.role});
       console.log(user)
   }
   else{
@@ -173,6 +173,27 @@ router.get("/details", async(req, res) =>{
       userRole:user.role,
     });
   }
+});
+
+router.get("feedback", async (req, res) =>{
+  const result = await dbHandler.getAllFB("Feedback");
+  const arr = [];
+  result.forEach(f => {
+    if (req.query.name === f.name) {
+      arr.push(f);
+    }
+  })
+  res.render("details", {query: req.query.name, list: arr}); //truyen gia tri cua book
+});
+
+router.post("feedback", (req, res) =>{
+  const bod = {
+    ...req.body,
+    username: req.session.user.name,
+    time: new Date().toISOString(),
+  };
+  dbHandler.insertObject("Feedback", bod);
+  res.redirect("details")
 });
 
 module.exports = router;

@@ -117,6 +117,18 @@ async function updateDocument(id, updateValues, collectionName) {
     .collection(collectionName)
     .updateOne({ _id: ObjectId(id) }, updateValues);
 }
+
+async function getAllFB(collectionName){
+  const dbo = await getDB();
+  const result = await dbo
+    .collection(collectionName)
+    .find({})
+    .sort({ time: -1})
+    .toArray();
+  return result;
+
+}
+
 const USERS_TABLE_NAME = "Users"
 
 
@@ -135,6 +147,7 @@ module.exports = {
                   getAllCategory,
                   searchObjectbyName,
                   searchObjectbyPrice,
+                  getAllFB,
                   USERS_TABLE_NAME
                 }
 

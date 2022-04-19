@@ -41,7 +41,7 @@
         <div class="container">
             <!-- logo  -->
             <img src="https://previews.123rf.com/images/jovanas/jovanas1602/jovanas160201759/52212634-%E6%9C%AC%E3%83%AD%E3%82%B4-%E3%82%B5%E3%82%A4%E3%83%B3%E9%BB%92.jpg" alt="" style="max-width: 90px;">
-            <a class="navbar-brand" href="/index" style="color: #CF111A;"><b>FPT BOOK STORE</b></a>
+            <a class="navbar-brand" href="#" onclick="returnback()" style="color: #CF111A;"><b>FPT BOOK STORE</b></a>
 
             <!-- navbar-toggler  -->
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
@@ -105,9 +105,7 @@
                         <!-- CATEGORIES -->
                         <div class="categorycontent">
                             <ul>
-                                {{#each cat}}
-                                <li><a class="dropdown-item" href="#">{{cat_name}}</a></li>
-                                {{/each}}
+                                <li><a class="dropdown-item" href="#">{{cat.cat_name}}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -234,18 +232,40 @@
                                             <div class="btn vietdanhgia mt-3">Write your feedback</div>
                                         </div>
                                         <!-- nội dung của form đánh giá  -->
-                                        <div class="formdanhgia">
+                                        <form action="/feedback" method="post">
+                                            <div class="formdanhgia">
                                             <h6 class="tieude text-uppercase">SEND YOUR FEEDBACK</h6>
                                             <span class="danhgiacuaban">Your feedback on this product:</span>
                                             <div class="form-group">
-                                                <input type="text" class="txtComment w-100" placeholder="Your feedback on this product">
+                                                <input type="text" class="txtComment w-100" name="feedback" placeholder="Your feedback on this product">
                                             </div>
-                                            <div class="btn nutguibl" >Send feedback</div>
+                                            <div class="btn nutguibl" >
+                                                <input type="submit" value="Submit">
+                                            </div>
                                         </div>
+                                        </form>
+                                        
                                     </div>
                                 </div>
                             </div>
                             <hr>
+                            <table>
+                                <thead>
+                                <th>Username</th>
+                                <th>Product</th>
+                                <th>Feedback</th>
+                                </thead>
+                                <tbody>
+                                {{#each list}}
+                                <tr>
+                                    <td>{{username}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{feedback}}</td>
+
+                                </tr>
+                                {{/each}}
+                                </tbody>
+                            </table>
                             <!-- het tab nav-danhgia  -->
                         </div>
                         <!-- het tab-content  -->
@@ -355,7 +375,9 @@
             style="background:#CF111A;"><i class="fa fa-chevron-up text-white"></i></div>
     </div>
 
-
+<script>
+    function returnback(){history.back();}
+</script>
 </body>
 
 </html>
