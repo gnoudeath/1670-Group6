@@ -28,9 +28,8 @@ router.get('/', async (req, res) =>{
     const client = await MongoClient.connect(url);
     const dbo = client.db("Test");
     const allProducts = await dbo.collection("Book").find({}).toArray();
-    const order = await dbHandler.getAllOrder();
-    res.render('homeAdmin', { data: allProducts , order:order});
-    
+    const orderCustomer = await dbHandler.getAllOrderCustomer();
+    res.render('homeAdmin', { data: allProducts , orderCustomer:orderCustomer});
 })
 
 
@@ -126,5 +125,18 @@ router.post('/updatecat',async(req,res)=>{
     await dbHandler.updateDocument(id, UpdateValue,"Category")
     res.redirect('/admin/category')
 })
+
+//update Status
+router.post("/updatestatus", async (req,res)=>{
+    const id = req.body.id
+    const status = req.body.status
+    const order = await dbHandler.getDocumentById(id,"CustomerOrder")
+    order["status"] = status
+    const neworder = {$set:{user:order.user, books:order.books,quantity:order.quantity, date:order.date, total_money:order.total_money, status:order.status}}
+    await dbHandler.updateDocument(id, neworder, "CustomerOrder")
+
+    res.redirect('/admin')
+})
+
 
 module.exports = router;
