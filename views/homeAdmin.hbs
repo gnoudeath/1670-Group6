@@ -24,7 +24,9 @@
       <option value="">Choose</option>
       <option value="today">Today</option>
       <option value="week">Week</option>
+      
     </select>
+    <button type="submit">Find</button>
   </form>
 </div>
   <div>
@@ -47,8 +49,9 @@
           <td>{{status}}</td>
           <td>
             <select name="status" id="status">
+            <option value="Processing">Processing</option>
+            <option value="Order confirmation">Order confirmation</option>
             <option value="Delivery in progress">Delivery in progress</option>
-            <option value="Receiving product">Receiving product</option>
             <option value="Delivery successful">Delivery successful</option>
             <option value="Delivery failed">Delivery failed</option>
             </select>

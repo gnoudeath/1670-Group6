@@ -4,7 +4,6 @@ const app = express(); //Su dung thu vien express
 const bcrypt = require("bcrypt");
 const dbHandler = require("./databaseHandler");
 
-
 //Static Files
 app.use(express.static('public'))
 app.use('/css', express.static(__dirname + 'public/css'))

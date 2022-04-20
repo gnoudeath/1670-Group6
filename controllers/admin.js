@@ -23,14 +23,6 @@ router.use((req, res, next) => {
     }
 })
 
-router.get('/', async (req, res) =>{
-    
-    const client = await MongoClient.connect(url);
-    const dbo = client.db("Test");
-    const allProducts = await dbo.collection("Book").find({}).toArray();
-    const orderCustomer = await dbHandler.getAllOrderCustomer();
-    res.render('homeAdmin', { data: allProducts , orderCustomer:orderCustomer});
-})
 
 
 //Admin
@@ -89,7 +81,7 @@ router.post('/updatebook', async (req, res) => {
 router.get('/category', async(req,res)=>{
     const cat = await dbHandler.getAllCategory();
     res.render('Admin_Category',{cat:cat})
-})
+}) 
 
 router.post('/category',async(req,res)=>{
     const catName = req.body.name;
@@ -143,6 +135,83 @@ router.post("/updatestatus", async (req,res)=>{
 router.get("/feedbackmanage", async (req, res) =>{
     let result = await dbHandler.getAllFB("Feedback");
     res.render('feedbackmanage', {feedback: result, user: req.session.user})
+});
+router.get('/', async (req, res) =>{
+    
+    // const client = await MongoClient.connect(url);   
+    // const dbo = client.db("Test");
+    // const allProducts = await dbo.collection("Book").find({}).toArray();
+    
+    if(req.query.findOrder == "today"){
+        res.redirect("/admin/today");
+    }else if(req.query.findOrder == "week"){
+        res.redirect("/admin/week");
+    }
+    else{
+        const orderCustomer = await dbHandler.getAllOrderCustomer();
+        orderCustomer.forEach((element) => { //use loop in Customer Order 
+        element.date = element.date.toLocaleString("vi"); //convert time to vietnam
+        element.itemString = ""; //tao bien itemString de hien thi cac phan tu trong element (them item va amount)
+        element.book.forEach(e => { //use loop in books in customerorder
+        element.itemString += e.name + " - (" + e.qty + ")"; //display name + qty 
+        // chay duoc roi nhe
+        })
+    });
+    res.render('homeAdmin', {  orderCustomer:orderCustomer , user: req.session.user});   
+    }
+
+})
+
+router.get("/:findOrder", async (req, res, next) => { //sortby same tham số
+    let result = await dbHandler.getAllCustomerOrder();
+    if (req.params.findOrder === "today") {
+        let today = new Date().toLocaleDateString("vi");//lưu new Date.toLocaledatestring = today; today ở dạng stirng
+        result = result.filter((item) => { //dùng filter cho biến result lọc ra các phần từ có đk là dòng 53. sau đó gán lại vào result
+            item.itemString = "";
+            item.books.forEach(e => {//tao bien itemString de hien thi cac phan tu trong element (them item va amount)
+                item.itemString += e.name + " - (" + e.qty + ")";
+            })
+            return item.time.toLocaleDateString("vi") === today
+        });
+        result.forEach((element) => { //dùng loop cho tất cả result để hiển thị time theo dang string
+            element.time = element.time.toLocaleString("vi");
+        });
+        res.render("adminPage", { customerOrder: result }); //truyền vào tất cả các result vừa được xử lý
+
+    } else if (req.params.findOrder === "week") {
+        let today = new Date(); //gán today bằng ngày hn
+        let week = new Date(today.setDate(today.getDate() - 7)); //week = lấy (today.getDate -7) là dạng số. sau đó setDate lại về dạng thời gian
+        result = result.filter((item) => { //item là 1 phần tử của result
+            item.itemString = "";
+            item.books.forEach(e => {//tao bien itemString de hien thi cac phan tu trong element (them item va amount)
+                item.itemString += e.name + " - (" + e.qty + ")";
+            })
+            return item.time > week //dk ptu có điều kiện item > week
+        });
+        result.forEach((element) => {//dùng loop cho result sau đó chuyển element.time về dạng string theo keieur vn
+            element.time = element.time.toLocaleString("vi");
+        });
+        res.render("adminPage", { customerOrder: result }); //truyền vào tất cả result vừa được xử lý
+    }
+    else if (req.params.findOrder === "delete") {//tham số sortby là delete
+        let { id } = req.query; // same as: let id = req.query.id;
+        let result = await dbHandler.deleteOne("CustomerOrder", { _id: ObjectId(id) });//dùng hàm deOne để xóa 1 document trong collection customer order
+        if (result == null) { 
+           res.send("Cancel error!"); 
+        } else {
+            res.redirect("/admin");
+        }
+    }
+    else {
+        next("route");
+    }
+});
+
+router.get("/admin", async (req, res) => {
+    let result = await dbHandler.getAllCustomerOrder();
+    result.forEach((element) => (element.date = element.date.toLocaleString("vi")));
+    res.render("homeAdmin", { demo: result, next: true });
+
 });
 
 module.exports = router;
