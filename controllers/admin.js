@@ -130,6 +130,12 @@ router.post("/updatestatus", async (req,res)=>{
     res.redirect('/admin')
 })
 
+//feedback manage
+
+router.get("/feedbackmanage", async (req, res) =>{
+    let result = await dbHandler.getAllFB("Feedback");
+    res.render('feedbackmanage', {feedback: result, user: req.session.user})
+});
 router.get('/', async (req, res) =>{
     
     // const client = await MongoClient.connect(url);   
@@ -205,6 +211,7 @@ router.get("/admin", async (req, res) => {
     let result = await dbHandler.getAllCustomerOrder();
     result.forEach((element) => (element.date = element.date.toLocaleString("vi")));
     res.render("homeAdmin", { demo: result, next: true });
+
 });
 
 module.exports = router;
