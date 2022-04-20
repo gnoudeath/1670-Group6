@@ -138,5 +138,11 @@ router.post("/updatestatus", async (req,res)=>{
     res.redirect('/admin')
 })
 
+//feedback manage
+
+router.get("/feedbackmanage", async (req, res) =>{
+    let result = await dbHandler.getAllFB("Feedback");
+    res.render('feedbackmanage', {feedback: result, user: req.session.user})
+});
 
 module.exports = router;
