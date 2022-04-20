@@ -146,9 +146,9 @@ router.get('/', async (req, res) =>{
         orderCustomer.forEach((element) => { //use loop in Customer Order 
         element.date = element.date.toLocaleString("vi"); //convert time to vietnam
         element.itemString = ""; //tao bien itemString de hien thi cac phan tu trong element (them item va amount)
-        element.book.forEach(e => { //use loop in books in customerorder
-        element.itemString += e.name + " - (" + e.qty + ")"; //display name + qty 
-        })
+        // element.books.forEach(e => { //use loop in books in customerorder
+        // element.itemString += e.name + " - (" + e.qty + ")"; //display name + qty 
+        // })
     });
     res.render('homeAdmin', {  orderCustomer:orderCustomer , user: req.session.user});   
     }
@@ -205,9 +205,5 @@ router.get("/admin", async (req, res) => {
     result.forEach((element) => (element.date = element.date.toLocaleString("vi")));
     res.render("homeAdmin", { demo: result, next: true });
 });
-
-
-
-
 
 module.exports = router;
