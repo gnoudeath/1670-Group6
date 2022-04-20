@@ -1,27 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback Manage</title>
 </head>
-<body>
-  <table>
-    <tr>
-      <th>Username</th>
-      <th>Product</th>
-      <th>Feedback</th>
 
-    </tr>
-    {{#each feedback}}
-    <tr>
-        <td>{{username}}</td>
-        <td>{{name}}</td>
-        <td>{{feedback}}</td>
-        <td>{{timeString}}</td>
-    </tr>
-    {{/each}}
-  </table>
+<body>
+    {{#if feedback}}
+    <a style="margin: 0 2rem 0 2rem;" href="/admin/feedbackmanage">All</a>
+    <a style="margin: 0 2rem 0 2rem;" href="/admin/feedbackmanage/today">Today</a>
+    <a style="margin: 0 2rem 0 2rem;" href="/admin/feedbackmanage/1weeks">1 weeks</a>
+    <a style="margin: 0 2rem 0 2rem;" href="/admin/feedbackmanage/1months">1 months</a>
+    {{/if}}  
+     <form action="/admin//feedbackmanage/searchFeedback" method="GET">
+                                    <input type="text" name="bookName">
+                                    <button type="submit">Find</button>
+                                </form>
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Product</th>
+            <th>Feedback</th>
+            <th>Time</th>
+            <th>Action</th>
+        </tr>
+        {{#each feedback}}
+        <tr>
+            <td>{{username}}</td>
+            <td>{{name}}</td>
+            <td>{{feedback}}</td>
+            <td>{{time}}</td>
+
+            <td><a href="/admin/feedbackmanage/delete?id={{_id}}">DELETE</a></td>
+        </tr>
+        {{/each}}
+    </table>
+
 </body>
 </html>
