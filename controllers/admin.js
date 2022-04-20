@@ -207,8 +207,4 @@ router.get("/admin", async (req, res) => {
     res.render("homeAdmin", { demo: result, next: true });
 });
 
-
-
-
-
 module.exports = router;
