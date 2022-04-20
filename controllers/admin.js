@@ -148,6 +148,7 @@ router.get('/', async (req, res) =>{
         element.itemString = ""; //tao bien itemString de hien thi cac phan tu trong element (them item va amount)
         element.book.forEach(e => { //use loop in books in customerorder
         element.itemString += e.name + " - (" + e.qty + ")"; //display name + qty 
+        // chay duoc roi nhe
         })
     });
     res.render('homeAdmin', {  orderCustomer:orderCustomer , user: req.session.user});   
