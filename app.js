@@ -3,6 +3,7 @@ const session = require('express-session');
 const app = express(); //Su dung thu vien express
 const bcrypt = require("bcrypt");
 const dbHandler = require("./databaseHandler");
+const hbs = require('hbs');
 
 //Static Files
 app.use(express.static('public'))
@@ -22,7 +23,10 @@ app.use(
 app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'hbs') //Khai bao su dung thu muc views
 app.use(express.urlencoded({ extended: true})) //Lay du lieu tu cac Form: textbox, combobox...
-
+/// hbs helper function
+hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
+    return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+});
 //neu request la: /admin/register
 app.get('/register',(req,res)=>{
     res.render('register')
