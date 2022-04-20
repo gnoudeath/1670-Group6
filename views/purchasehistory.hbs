@@ -165,14 +165,19 @@
             <td><img src="{{pic}}" alt="" style="width: 100px;"></td>
             <td>{{name}}</td>
             <td>{{cat.cat_name}}</td>
-            <td>{{price}}</td>
+            <td>${{price}}</td>
             {{/each}}
             <td>{{quantity}}</td>
-            <td>{{total_money}}</td>
+            <td>${{total_money}}</td>
             <td>{{date}}</td>
             
             <td>{{status}}</td>
-            <td><button type="button" class="btn btn-primary"><a href="#"></a>Cancel</button></td>
+            {{#ifEquals status "Processing"}}
+            <td><a href="/cancelorder?id={{_id}}">Cancel</a></td>
+            {{else}}
+            <td></td>
+            {{/ifEquals}}
+            
         </tr>
         
         {{/each}}
@@ -221,4 +226,5 @@
     </footer>
     </div>
 </body>
+
 </html>

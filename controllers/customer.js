@@ -201,8 +201,16 @@ router.post('/details',async(req,res)=>{
 
 router.get('/purchasehistory',async(req,res)=>{
   const order = await dbHandler.findOrder(req.session.user.name)
-
+  
   res.render('purchasehistory',{order:order})
+})
+
+router.get('/cancelorder',async(req,res)=>{
+  const id = req.query.id
+  
+  await dbHandler.updateDocument(id,{$set:{status:"Request Cancel"}},"CustomerOrder")
+  res.redirect('back')
+
 })
 
 
