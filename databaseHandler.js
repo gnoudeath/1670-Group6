@@ -142,6 +142,16 @@ async function getAllOrderCustomer() {
   return allOrderCustomer;
 }
 
+async function getAll(collectionName) {
+  const dbo = await getDB();
+  const result = await dbo
+    .collection(collectionName)
+    .find({})
+    .sort({ time: -1 })
+    .toArray();
+  return result;
+}
+
 
 
 const USERS_TABLE_NAME = "Users"
@@ -165,6 +175,7 @@ module.exports = {
                   getAllFB,
                   findOrder,
                   getAllOrderCustomer,
+                  getAll,
                   USERS_TABLE_NAME
                 }
 
