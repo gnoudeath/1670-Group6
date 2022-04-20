@@ -161,10 +161,12 @@
     <tbody>
         {{#each order}}
         <tr>
-            <td><img src="{{book.pic}}" alt="" style="width: 100px;"></td>
-            <td>{{book.name}}</td>
-            <td>{{book.cat.cat_name}}</td>
-            <td>{{book.price}}</td>
+            {{#each book}}
+            <td><img src="{{pic}}" alt="" style="width: 100px;"></td>
+            <td>{{name}}</td>
+            <td>{{cat.cat_name}}</td>
+            <td>{{price}}</td>
+            {{/each}}
             <td>{{quantity}}</td>
             <td>{{total_money}}</td>
             <td>{{date}}</td>

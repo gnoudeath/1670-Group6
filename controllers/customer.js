@@ -187,7 +187,7 @@ router.post('/details',async(req,res)=>{
   var time = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear()+ '-' + today.getHours() + ":" + today.getMinutes();
   const newOrder = {
     user:user.userName,
-    book:book,
+    book:[book],
     quantity:quantity,
     date:time,
     total_money:total,
