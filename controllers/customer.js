@@ -227,10 +227,12 @@ router.get("/feedback", async (req, res) =>{
 });
 
 router.post("/feedback", (req, res) =>{
+  var today = new Date()
+  var time = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear()+ '-' + today.getHours() + ":" + today.getMinutes();
   const bod = {
     ...req.body,
     username: req.session.user.name,
-    time: new Date().toISOString(),
+    time: time,
   };
   dbHandler.insertObject("Feedback", bod);
   res.redirect("back")
