@@ -17,7 +17,7 @@
     <li><a href="/admin/feedbackmanage" class="nav-link">FeedBack</a></li>
     <li><a href="/admin/category" class="nav-link">Category</a></li>
   </div>
-<div>
+{{!-- <div>
   <h4>Order</h4>
   <form action="/admin">
     <select name="findOrder" required>
@@ -64,6 +64,77 @@
         {{/each}}
       </tbody>
     </table>
-  </div>
+  </div> --}}
+  {{#if customerOrder}}
+                <div class="row">
+                    <div class="container-fluid">
+                        <div class="dash-card">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4>Orders</h4>
+                                <form action="/admin/manageCustomer/searchCustomer" method="GET">
+                                    {{!-- <button type="submit">Search</button>
+                                    <input type="text" id="Username" name="Username" placeholder="User name..."> --}}
+                                </form>
+                                <form action="/admin">
+                                    <select name="sortBy" required>
+                                        <option value="">Choose</option>
+                                        <option value="today">Today</option>
+                                        <option value="week">Week</option>
+                                    </select>
+                                    
+                                    <button type="submit">Find</button>
+                                </form>
+
+
+
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Order</th>
+                                            <th>Time</th>
+                                            <th>Status</th>
+                                            <th>Update Status</th>
+                                            <th>Action</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each customerOrder}}
+                                        <form action="/admin/updatestatus" method="post">
+                                        <input type="hidden" name="id" value="{{_id}}">
+                                        <tr>
+                                            <td>{{user}}</td>
+                                            <td>{{itemString}}</td>
+                                            <td>{{date}}</td>
+                                            <td>{{Status}}</td>
+                                            <td>
+                                                <select name="status" id="status">
+                                                    <option value="Delivery in progress">Delivery in progress</option>
+                                                    <option value="Receiving product">Receiving product</option>
+                                                    <option value="Delivery successful">Delivery successful</option>
+                                                    <option value="Delivery failed">Delivery failed</option>
+                                                </select>
+                                                <button type="submit">
+                                                    Update Status
+                                                </button>
+                                            
+                                        </tr>
+                                        </form>
+                                        {{/each}}
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+          
+
+
 </body>
 </html>

@@ -136,11 +136,7 @@ async function findOrder(name) {
   const result = await dbo.collection("CustomerOrder").find({ user:name }).toArray();
   return result;
 }
-async function getAllOrderCustomer() {
-  const dbo = await getDB();
-  const allOrderCustomer = await dbo.collection("CustomerOrder").find({}).toArray();
-  return allOrderCustomer;
-}
+
 
 async function getAll(collectionName) {
   const dbo = await getDB();
@@ -174,7 +170,6 @@ module.exports = {
                   searchObjectbyPrice,
                   getAllFB,
                   findOrder,
-                  getAllOrderCustomer,
                   getAll,
                   USERS_TABLE_NAME
                 }
