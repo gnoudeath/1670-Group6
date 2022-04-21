@@ -189,10 +189,7 @@ router.get("/feedbackmanage/searchFeedback", async(req, res) =>{
 
 //neu request la: /admin
 router.get('/', async (req, res) => {
-// //     const client = await MongoClient.connect(url);   
-// //     const dbo = client.db("Test");
-// //     const allProducts = await dbo.collection("Book").find({}).toArray();
-// // });
+
     if (req.query.sortBy == "today") { //if user choose today
         res.redirect("/admin/today");
     } else if (req.query.sortBy == 'week') { //if user choose week

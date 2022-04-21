@@ -199,6 +199,64 @@
         </div>
       </div>
     </div>
+
+
+
+
+  {{!-- HBS ORder --}}
+    {{#if customerOrder}}
+    <h4>Order</h4>
+    <form action="/admin">
+      <select name="sortBy" required>
+        <option value="">Choose</option>
+        <option value="today">Today</option>
+        <option value="week">Week</option>
+      </select>
+      <button type="submit">Find</button>
+    </form>
+    {{/if}}
+  </div>
+    <div>
+      <table class="table table-borderless">
+        <thead>
+            <tr>
+              <th>Name</th>
+              <th>Time</th>
+              <th>Status</th>
+              <td>Update Status</td>
+              <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+          {{#each customerOrder}}
+          <form action="/admin/updatestatus" method="post">
+          <input type="hidden" name="id" value="{{_id}}">
+          <tr>
+            <td>{{user}}</td>
+            <td>{{date}}</td>
+            <td>{{status}}</td>
+            <td>
+              <select name="status" id="status">
+              <option value="Order confirmation">Order confirmation</option>
+              <option value="Delivery in progress">Delivery in progress</option>
+              <option value="Delivery successful">Delivery successful</option>
+              <option value="Delivery failed">Delivery failed</option>
+              </select>
+              <button type="submit">
+                Update Status
+              </button>
+            </td>
+            <td><a href="/admin/delete?id={{_id}}">DELETE</a></td>
+          </tr>
+          </form>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+
+
+
+
   </main>
 </body>
 

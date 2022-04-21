@@ -9,17 +9,9 @@
   <title>Admin</title>
 </head>
 <body>
-  <h1>FPT Store</h1>
-  <div>
-    <li><a href="/admin"class="nav-link">Dashboard</a></li>
-    <li><a href="/admin/product" class="nav-link">Product</a></li>
-    <li><a href="/admin/order" class="nav-link">Order</a></li>
-    <li><a href="/admin/feedbackmanage" class="nav-link">FeedBack</a></li>
-    <li><a href="/admin/category" class="nav-link">Category</a></li>
-  </div>
-<div>
+  {{#if customerOrder}}
   <h4>Order</h4>
-  <form action="/admin">
+  <form action="/orderproduct">
     <select name="sortBy" required>
       <option value="">Choose</option>
       <option value="today">Today</option>
@@ -28,6 +20,8 @@
     </select>
     <button type="submit">Find</button>
   </form>
+  {{/if}}
+
 </div>
   <div>
     <table class="table table-borderless">
@@ -40,8 +34,8 @@
           </tr>
       </thead>
       <tbody>
-        {{#each orderCustomer}}
-        <form action="/admin/updatestatus" method="post">
+        {{#each customerOrder}}
+        <form action="/orderproduct/updatestatus" method="post">
         <input type="hidden" name="id" value="{{_id}}">
         <tr>
           <td>{{user}}</td>
@@ -49,7 +43,6 @@
           <td>{{status}}</td>
           <td>
             <select name="status" id="status">
-            <option value="Processing">Processing</option>
             <option value="Order confirmation">Order confirmation</option>
             <option value="Delivery in progress">Delivery in progress</option>
             <option value="Delivery successful">Delivery successful</option>
