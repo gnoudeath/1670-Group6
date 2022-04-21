@@ -184,7 +184,7 @@ router.post('/details',async(req,res)=>{
   const username = req.session.user.name
   const user = await dbHandler.getUser(username)
   var today = new Date()
-  var time = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear()+ '-' + today.getHours() + ":" + today.getMinutes();
+  var time = today.getFullYear() + '-' + (today.getMonth()+1) + '-' + today.getDate() + ' ' + today.getHours() + ':' + today.getMinutes()
   const newOrder = {
     user:user.userName,
     book:[book],
@@ -227,10 +227,13 @@ router.get("/feedback", async (req, res) =>{
 });
 
 router.post("/feedback", (req, res) =>{
+  var today = new Date()
+  var time =   today.getFullYear() + '-' + (today.getMonth()+1) + '-' + today.getDate() + ' ' + today.getHours() + ':' + today.getMinutes();
+
   const bod = {
     ...req.body,
     username: req.session.user.name,
-    time: new Date().toISOString(),
+    time: time,
   };
   dbHandler.insertObject("Feedback", bod);
   res.redirect("back")
