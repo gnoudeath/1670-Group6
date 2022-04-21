@@ -189,7 +189,8 @@ router.get("/feedbackmanage/searchFeedback", async(req, res) =>{
 
 //neu request la: /admin
 router.get('/', async (req, res) => {
-
+    const { user } = req.session;
+    var passedVariable = req.query.userName;
     if (req.query.sortBy == "today") { //if user choose today
         res.redirect("/admin/today");
     } else if (req.query.sortBy == 'week') { //if user choose week
@@ -205,7 +206,8 @@ router.get('/', async (req, res) => {
         // });
         res.render('homeAdmin', {
             customerOrder: customerOrder,//truyen vao adminPage giá trị của customerorder
-            user: req.session.user//
+            user: req.session.user,
+            userName:passedVariable, userRole:user.role//
         })
     // }
 }})
