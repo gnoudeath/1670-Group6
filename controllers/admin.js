@@ -199,13 +199,13 @@ router.get('/', async (req, res) => {
         res.redirect("/admin/week");
     } else {
         const customerOrder = await dbHandler.getAll("CustomerOrder") //get all database in Customer order and set is customerOrder
-        customerOrder.forEach((element) => { //use loop in Customer Order 
-            element.date = element.date; //convert time to vietnam
-            element.itemString = ""; //tao bien itemString de hien thi cac phan tu trong element (them item va amount)
-            element.book.forEach(e => { //use loop in books in customerorder
-                element.itemString += e.name + " - (" + e.quantity + ")"; //display name + qty 
-            })
-        });
+        // customerOrder.forEach((element) => { //use loop in Customer Order 
+        //     element.date = element.date; //convert time to vietnam
+        //     element.itemString = ""; //tao bien itemString de hien thi cac phan tu trong element (them item va amount)
+        //     element.book.forEach(e => { //use loop in books in customerorder
+        //         element.itemString += e.name + " - (" + e.quantity + ")"; //display name + qty 
+        //     })
+        // });
         res.render('homeAdmin', {
             customerOrder: customerOrder,//truyen vao adminPage giá trị của customerorder
             user: req.session.user//
@@ -234,13 +234,8 @@ router.get("/:sortBy", async (req, res, next) => { //sortby same tham số
         
     }
     else if (req.params.sortBy === "delete") {//tham số sortby là delete
-        let { id } = req.query; // same as: let id = req.query.id;
-        let result = await dbHandler.deleteOne("CustomerOrder", { _id: ObjectId(id) });//dùng hàm deOne để xóa 1 document trong collection customer order
-        if (result == null) { 
-           res.send("Cancel error!"); 
-        } else {
-            res.redirect("/admin");
-        }
+        await dbHandler.deleteOne("CustomerOrder", req.query.id);
+        res.redirect("/admin");
     }
     else {
         next("route");

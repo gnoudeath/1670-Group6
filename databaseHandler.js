@@ -95,14 +95,9 @@ async function deleteDocument(collectionName, objectToDelete) {
   const dbo = await getDB();
   await dbo.collection(collectionName).deleteOne(objectToDelete)
 }
-async function deleteOne(collectionName, deleteObject) {
+async function deleteOne(collectionName, id) {
   const dbo = await getDB();
-  const result = await dbo.collection(collectionName).deleteOne(deleteObject);
-  if (result.deletedCount > 0) {
-    return true;
-  } else {
-    return false;
-  }
+  await dbo.collection(collectionName).deleteOne({ _id: ObjectId(id) });
 }
 async function getDocumentById(id, collectionName) {
   const dbo = await getDB();
