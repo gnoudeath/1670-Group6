@@ -85,7 +85,7 @@
                                     <button type="submit">Find</button>
                                 </form>
 
-
+  {{/if}}
 
                             </div>
                             <div class="table-responsive">
@@ -93,7 +93,6 @@
                                     <thead>
                                         <tr>
                                             <th>Name</th>
-                                            <th>Order</th>
                                             <th>Time</th>
                                             <th>Status</th>
                                             <th>Update Status</th>
@@ -107,9 +106,8 @@
                                         <input type="hidden" name="id" value="{{_id}}">
                                         <tr>
                                             <td>{{user}}</td>
-                                            <td>{{itemString}}</td>
                                             <td>{{date}}</td>
-                                            <td>{{Status}}</td>
+                                            <td>{{status}}</td>
                                             <td>
                                                 <select name="status" id="status">
                                                     <option value="Delivery in progress">Delivery in progress</option>
@@ -132,7 +130,7 @@
                     </div>
                 </div>
             </div>
-            {{/if}}
+          
           
 
 
