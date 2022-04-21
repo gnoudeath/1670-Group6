@@ -115,6 +115,7 @@ router.post('/updatecat',async(req,res)=>{
     const descCat = req.body.desc
     const id = req.body.id
     const UpdateValue = {$set: {cat_name:nameCat , cat_desc:descCat}}
+    console.log(UpdateValue)
     await dbHandler.updateDocument(id, UpdateValue,"Category")
     res.redirect('/admin/category')
 })
@@ -240,4 +241,19 @@ router.get("/:sortBy", async (req, res, next) => { //sortby same tham số
         next("route");
     }
 });
+
+router.post('/replyfeedback',async(req,res)=>{
+    const id = req.body.cmtid
+    
+    const username = req.body.userid
+    const adreply = req.body.adreply
+    const UpdateValue = {$push: {reply:{  aduser:username, content:adreply}} }
+    console.log(UpdateValue)
+    const update = await dbHandler.updateDocument(id,UpdateValue,"Feedback")
+    console.log(update)
+    res.redirect('back')
+
+})
+
+
 module.exports = router;

@@ -1,64 +1,5 @@
-{{!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback Manage</title>
-</head>
-
-<body>
-    {{#if feedback}}
-    <a style="margin: 0 2rem 0 2rem;" href="/admin/feedbackmanage">All</a>
-    <a style="margin: 0 2rem 0 2rem;" href="/admin/feedbackmanage/today">Today</a>
-    <a style="margin: 0 2rem 0 2rem;" href="/admin/feedbackmanage/1weeks">1 weeks</a>
-    <a style="margin: 0 2rem 0 2rem;" href="/admin/feedbackmanage/1months">1 months</a>
-    {{/if}}  
-     <form action="/admin//feedbackmanage/searchFeedback" method="GET">
-                                    <input type="text" name="bookName">
-                                    <button type="submit">Find</button>
-                                </form>
-    <table>
-        <tr>
-            <th>Username</th>
-            <th>Product</th>
-            <th>Feedback</th>
-            <th>Time</th>
-            <th>Action</th>
-        </tr>
-        {{#each feedback}}
-        <tr>
-            <td>{{username}}</td>
-            <td>{{name}}</td>
-            <td>{{feedback}}</td>
-            <td>{{time}}</td>
-
-            <td><a href="/admin/feedbackmanage/delete?id={{_id}}">DELETE</a></td>
-        </tr>
-        {{/each}}
-    </table>
-
-</body>
-</html> --}}
-
-<!--
-=========================================================
-* Material Dashboard 2 - v3.0.2
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -78,10 +19,13 @@
 
   <link href="/vendor/open-iconic-master/font/css/open-iconic-bootstrap.css" rel="stylesheet" />
   
+ <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+      
 </head>
-
     <!-- Navbar -->
-    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
@@ -151,6 +95,9 @@
             <td>{{time}}</td>
 
             <td><a href="/admin/feedbackmanage/delete?id={{_id}}">DELETE</a></td>
+            <td><button class="btn btn-primary" data-username="{{username}}" data-book="{{name}}" data-feedback="{{feedback}}" data-cmtid="{{_id}}" data-toggle="modal" data-target="#myModal">
+					Edit
+				</button></td>
         </tr>
         {{/each}}
 
@@ -162,8 +109,53 @@
       </div>
     </div>
   </main>
-<script>
-    function returnback(){history.back();}
+  <!-- Modal --> 
+  
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header"><h4 class="modal-title" id="myModalLabel">Reply feedback</h4>
+      </div>
+      <div class="modal-body">
+        <style>
+          #profileForm input{
+            min-width: 100%;
+          }
+        </style>
+        <form id="profileForm" action="/admin/replyfeedback" method="POST">
+        <input  type="hidden" name="cmtid" value="">
+        Username: <input class="form-control" name="username" value="" disabled>
+        Book Name: <input class="form-control" name="book" value="" disabled>
+        Comment: 
+        <textarea class="form-control" name="feedback"  style="min-height: 100px;min-width:100%" disabled></textarea>
+        Reply: <input type="hidden" name="userid" value="{{user.name}}">
+        <textarea class="form-control" name="adreply" placeholder="Reply this feedback..." style="min-height: 100px;" ></textarea>
+        
+  
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Reply </button>
+        
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+<script type="text/javascript">
+  $('#myModal').on('show.bs.modal', function (event) {
+  var cmtid = $(event.relatedTarget).data('cmtid');
+  var userName = $(event.relatedTarget).data('username');
+  var book = $(event.relatedTarget).data('book');
+  var feedback = $(event.relatedTarget).data('feedback')
+  $('#profileForm').find('[name="cmtid"]').val(cmtid);
+  $('#profileForm').find('[name="username"]').val(userName);
+  $('#profileForm').find('[name="book"]').val(book);
+  $('#profileForm').find('[name="feedback"]').val(feedback);
+});
+
 </script>
+  
 </body>
 </html>
