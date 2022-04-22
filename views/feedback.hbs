@@ -33,6 +33,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
     <link rel="manifest" href="favicon_io/site.webmanifest">
+    <link rel="stylesheet" href="/css/feedback-2.css">
 </head>
 
 <body>
@@ -71,64 +72,89 @@
     </nav>
     
 
-    <!-- breadcrumb  -->
-        <section class="product-page mb-4">
-        <div class="container">
-            <!-- chi tiết 1 sản phẩm -->
-
-   
-                    <div class="product-description col-md-9">
-                        <!-- 2 tab ở trên  -->
-                        <nav>
-                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <a class="nav-item nav-link text-uppercase" id="nav-danhgia-tab" data-toggle="tab"
-                                    href="#nav-danhgia" role="tab" aria-controls="nav-danhgia"
-                                    aria-selected="false">Feedback</a>
-                            </div>
-                        </nav>
-                        <!-- nội dung của từng tab  -->
-                        <div class="tab-content" id="nav-tabContent">
-
-                            <hr>
-                            <table class="tabled">
-                                <thead>
-                                <th>Username</th>
-                                <th>Product</th>
-                                <th>Feedback</th>
-                                </thead>
-                                <tbody>
-                                {{#each list}}
-                                <tr>
-                                    <td>{{username}}</td>
-                                    <td>{{name}}</td>
-                                    <td>{{feedback}}</td>
-                                </tr>
-                                {{/each}}
-                                </tbody>
-                            </table>
-                            <!-- het tab nav-danhgia  -->
-                        </div>
-                        <!-- het tab-content  -->
-                    </div>
-                    <!-- het product-description -->
-                </div>
-                <!-- het row  -->
-            </div>
-            <!-- het product-detail -->
-        </div>
-        <!-- het container  -->
-    </section>
-    <!-- het product-page -->
-
-    <!-- thanh cac dich vu :mien phi giao hang, qua tang mien phi ........ -->
-    
-
-    <!-- nut cuon len dau trang -->
+    <div class="container bootstrap snippets bootdey">
+    <div class="row">
+		<div class="col-md-12">
+		    <div class="blog-comment">
+				<h3 class="text-success">Feedback -  {{bookname}}</h3>
+                <hr/>
+				<ul class="comments">
+                {{#each list}}    
+				<li class="clearfix">
+				  <img src="https://bootdey.com/img/Content/user_2.jpg" class="avatar" alt="">
+				  <div class="post-comments">
+				      <p class="meta">{{time}} <a href="#">{{username}}</a> says : </p>
+				      <p>
+				          {{feedback}}
+				      </p>
+				  </div>
+				    {{#if reply}}
+				  <ul class="comments">
+                      {{#each reply}}
+				      <li class="clearfix">
+				          <img src="https://bootdey.com/img/Content/user_3.jpg" class="avatar" alt="">
+				          <div class="post-comments">
+				              <p class="meta"><a href="#">{{aduser}}</a> says : </p>
+				              <p>
+				                  {{content}}
+				              </p>
+				          </div>
+				      </li>
+                      {{/each}}
+				  </ul>
+                  {{/if}}
+                    {{/each}}
+				</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
     <div class="fixed-bottom">
         <div class="btn btn-warning float-right rounded-circle nutcuonlen" id="backtotop" href="#"
             style="background:#CF111A;"><i class="fa fa-chevron-up text-white"></i></div>
     </div>
-
+   <footer>
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-md-3 col-xs-6">
+                    <div class="gioithieu">
+                        <h6 class="header text-uppercase font-weight-bold">About FPT Book Store</h6>
+                        <a href="#">Introduct about DealBook</a>
+                        <div class="fb-like" data-href="https://www.facebook.com/DealBook-110745443947730/"
+                            data-width="300px" data-layout="button" data-action="like" data-size="small"
+                            data-share="true"></div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                    <div class="hotrokh">
+                        <h6 class="header text-uppercase font-weight-bold">CUSTOMER SUPPORT</h6>
+                        <a href="#">Ordering guide</a>
+                        <a href="#">Payment methods</a>
+                        <a href="#">Shipping method</a>
+                        <a href="#">Return Policy</a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                    <div class="lienket">
+                        <h6 class="header text-uppercase font-weight-bold">COOPERATION AND LINKS</h6>
+                        <img src="/img/dang-ky-bo-cong-thuong.png" alt="dang-ky-bo-cong-thuong">
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                    <div class="ptthanhtoan">
+                        <h6 class="header text-uppercase font-weight-bold">Payment methods</h6>
+                        <img src="/img/visa-payment.jpg" alt="visa-payment">
+                        <img src="/img/master-card-payment.jpg" alt="master-card-payment">
+                        <img src="/img/jcb-payment.jpg" alt="jcb-payment">
+                        <img src="/img/atm-payment.jpg" alt="atm-payment">
+                        <img src="/img/cod-payment.jpg" alt="cod-payment">
+                        <img src="/img/payoo-payment.jpg" alt="payoo-payment">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 <script>
     function returnback(){history.back();}
 </script>

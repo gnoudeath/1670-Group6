@@ -217,13 +217,14 @@ router.get('/cancelorder',async(req,res)=>{
 
 router.get("/feedback", async (req, res) =>{
   const result = await dbHandler.getAllFB("Feedback");
+  const name = req.query.name
   const arr = [];
   result.forEach(f => {
     if (req.query.name === f.name) {
       arr.push(f);
     }
   })
-  res.render("feedback", {list: arr}); //truyen gia tri cua book
+  res.render("feedback", {list: arr,bookname:name}); //truyen gia tri cua book
 });
 
 router.post("/feedback", (req, res) =>{
@@ -237,5 +238,9 @@ router.post("/feedback", (req, res) =>{
   dbHandler.insertObject("Feedback", bod);
   res.redirect("back")
 });
+
+router.get('/test',(req,res)=>{
+  res.render('cmttest')
+})
 
 module.exports = router;
