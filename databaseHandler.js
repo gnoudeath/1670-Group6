@@ -143,6 +143,12 @@ async function getAll(collectionName) {
   return result;
 }
 
+async function getDocumentByName(name){
+  const dbo = await getDB();
+  const result = await dbo.collection("Book").findOne({name:name})
+  return result
+}
+
 
 
 const USERS_TABLE_NAME = "Users"
@@ -166,6 +172,7 @@ module.exports = {
                   getAllFB,
                   findOrder,
                   getAll,
+                  getDocumentByName,
                   USERS_TABLE_NAME
                 }
 

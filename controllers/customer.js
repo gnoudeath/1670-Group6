@@ -218,13 +218,15 @@ router.get('/cancelorder',async(req,res)=>{
 router.get("/feedback", async (req, res) =>{
   const result = await dbHandler.getAllFB("Feedback");
   const name = req.query.name
+  const book = await dbHandler.getDocumentByName(name)
+  const pic = book.pic
   const arr = [];
   result.forEach(f => {
     if (req.query.name === f.name) {
       arr.push(f);
     }
   })
-  res.render("feedback", {list: arr,bookname:name}); //truyen gia tri cua book
+  res.render("feedback", {list: arr,bookname:name,pic:pic}); //truyen gia tri cua book
 });
 
 router.post("/feedback", (req, res) =>{
