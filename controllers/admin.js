@@ -70,7 +70,7 @@ router.post('/updatebook', async (req, res) => {
     const Description = req.body.txtDescription
     const cat = req.body.cat
     const catid = await dbHandler.getDocumentById(cat,'Category')
-    const UpdateValue = {$set: {name:nameInput, des:Description, price:Number.parseFloat(priceInput), image:image, cat:catid}}
+    const UpdateValue = {$set: {name:nameInput, des:Description, price:Number.parseFloat(priceInput), pic:image, cat:catid}}
     const id = req.body.txtid
     console.log(UpdateValue)
     console.log(id)
