@@ -232,6 +232,15 @@ router.get("/:sortBy", async (req, res, next) => { //sortby same tham số
             user: req.session.user,
         });
         
+        
+    } else if(req.params.sortBy === "month"){
+        const queryTimeDay = new Date(today.setMonth(today.getMonth() - 1));
+        result = result.filter((e) => new Date(e.date) > queryTimeDay);
+        res.render("homeAdmin", {
+            customerOrder: result,
+            user: req.session.user,
+        });
+
     }
     else if (req.params.sortBy === "delete") {//tham số sortby là delete
         await dbHandler.deleteOne("CustomerOrder", req.query.id);
