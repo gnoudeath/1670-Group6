@@ -87,11 +87,16 @@ async function searchObjectbyPrice(collectionName, price) {
   return result;
 }
 
-async function searchObjectbyCategory(collectionName, category){
+async function searchObjectbyCategory(category) {
   const dbo = await getDB();
+  const cat = await dbo
+    .collection("Category")
+    .findOne({ _id: ObjectID(category) })
+    ;
+  console.log(cat);
   const result = await dbo
-    .collection(collectionName)
-    .find({ category: ObjectID(category)})
+    .collection("Book")
+    .find({ cat: cat })
     .toArray();
   return result;
 }
@@ -124,12 +129,12 @@ async function updateDocument(id, updateValues, collectionName) {
 }
 
 
-async function getAllFB(collectionName){
+async function getAllFB(collectionName) {
   const dbo = await getDB();
   const result = await dbo
     .collection(collectionName)
     .find({})
-    .sort({ time: -1})
+    .sort({ time: -1 })
     .toArray();
   return result;
 
@@ -138,7 +143,7 @@ async function getAllFB(collectionName){
 
 async function findOrder(name) {
   const dbo = await getDB();
-  const result = await dbo.collection("CustomerOrder").find({ user:name }).toArray();
+  const result = await dbo.collection("CustomerOrder").find({ user: name }).toArray();
   return result;
 }
 
@@ -153,9 +158,9 @@ async function getAll(collectionName) {
   return result;
 }
 
-async function getDocumentByName(name){
+async function getDocumentByName(name) {
   const dbo = await getDB();
-  const result = await dbo.collection("Book").findOne({name:name})
+  const result = await dbo.collection("Book").findOne({ name: name })
   return result
 }
 
@@ -165,25 +170,25 @@ const USERS_TABLE_NAME = "Users"
 
 
 module.exports = {
-                  insertObject,
-                  checkUserRole,
-                  getDB, getAllProducts,
-                  deleteDocumentById,
-                  deleteDocument,
-                  deleteOne,
-                  getDocumentById,
-                  updateDocument,
-                  checkUserLogin,
-                  getUser,
-                  checkUser,
-                  getAllCategory,
-                  searchObjectbyName,
-                  searchObjectbyPrice,
-                  searchObjectbyCategory,
-                  getAllFB,
-                  findOrder,
-                  getAll,
-                  getDocumentByName,
-                  USERS_TABLE_NAME
-                }
+  insertObject,
+  checkUserRole,
+  getDB, getAllProducts,
+  deleteDocumentById,
+  deleteDocument,
+  deleteOne,
+  getDocumentById,
+  updateDocument,
+  checkUserLogin,
+  getUser,
+  checkUser,
+  getAllCategory,
+  searchObjectbyName,
+  searchObjectbyPrice,
+  searchObjectbyCategory,
+  getAllFB,
+  findOrder,
+  getAll,
+  getDocumentByName,
+  USERS_TABLE_NAME
+}
 
