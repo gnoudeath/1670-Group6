@@ -35,6 +35,14 @@ router.get('/index', async (req, res) =>{
   res.render('index', { book:book,userName:passedVariable, userRole:user.role ,cat:cat });
 
 })
+// // get product by category
+// router.get("/" async(req, res) =>{
+//   const maga = await dbHandler.searchObjectbyCategory(
+//     "Magazine",
+//     "62618e5513d90625d1c8125e"
+//   );
+
+// })
 
 //search
 router.get("/search", async (req, res) => {

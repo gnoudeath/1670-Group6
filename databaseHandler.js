@@ -1,3 +1,4 @@
+const { ObjectID } = require('bson');
 const async = require('hbs/lib/async');
 const { MongoClient, ObjectId } = require('mongodb');
 
@@ -86,6 +87,15 @@ async function searchObjectbyPrice(collectionName, price) {
   return result;
 }
 
+async function searchObjectbyCategory(collectionName, category){
+  const dbo = await getDB();
+  const result = await dbo
+    .collection(collectionName)
+    .find({ category: ObjectID(category)})
+    .toArray();
+  return result;
+}
+
 async function deleteDocumentById(collectionName, id) {
   const dbo = await getDB();
   await dbo.collection(collectionName).deleteOne({ _id: ObjectId(id) });
@@ -169,6 +179,7 @@ module.exports = {
                   getAllCategory,
                   searchObjectbyName,
                   searchObjectbyPrice,
+                  searchObjectbyCategory,
                   getAllFB,
                   findOrder,
                   getAll,
