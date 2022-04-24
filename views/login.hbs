@@ -10,6 +10,12 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
+<style>
+    body{
+        background-image: url("https://tophinhanhdep.com/wp-content/uploads/2021/11/Books-HD-Wallpapers.jpg");
+        background-size: 1492px;
+    }
+    </style>
     {{!-- <h1>Login page</h1>
     <form action="/admin/login" method="post">
     Name : <input type="text" name="txtName">
@@ -18,24 +24,23 @@
         <input type="password" name="txtPassword">
         <input type="submit" name="Login">
     </form> --}}
-
     <div id="login">
-        <h3 class="text-center text-white pt-5">Login Page</h3>
         <div class="container">
-            <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-row" class="row justify-content-center align-items-center" style="margin-top: 170px;">
                 <div id="login-column" class="col-md-6">
                     <div id="login-box" class="col-md-12">
                         <form id="login-form" class="form" action="/login" method="post">
-                            <h3 class="text-center text-info">Login</h3>
+                            <h1 style="color: rgb(232, 115, 12);">Welcome to FPT Book Store</h1>
+                            <h3 style="color: aliceblue;" class="text-center text-white">Login</h3>
                             <center>
                                 <h2 style="color: red;">{{errorMsg}}</h2>
                             </center>
                             <div class="form-group">
-                                <label for="username" class="text-info">Username:</label><br>
+                                <label for="username" class="text-white" >Username:</label><br>
                                 <input type="text" name="txtName" id="username" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="password" class="text-info">Password:</label><br>
+                                <label for="password" class="text-white">Password:</label><br>
                                 <input type="password" name="txtPass" id="password" class="form-control">
                             </div>
                             <div class="form-group">
@@ -43,7 +48,7 @@
                                     <option value="Customer">Customer</option>
                                     <option value="Admin">Admin</option>
                                 </select>
-                                <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
+                                <label for="remember-me" class="text-white"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
                                 <input type="submit" name="Login" class="btn btn-info btn-md" value="submit">
                             </div>
                             <div id="register-link" class="text-right">
