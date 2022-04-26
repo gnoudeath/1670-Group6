@@ -122,9 +122,7 @@ const adminController = require('./controllers/admin');
 app.use('/admin', adminController)
 
 const userController = require("./controllers/customer");
-
-
-
+//tat cac cac dia chi co chua admin: localhost:5000/customer
 app.use("/", userController);
 
 
