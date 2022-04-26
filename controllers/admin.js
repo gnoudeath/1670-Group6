@@ -218,7 +218,7 @@ router.get("/:sortBy", async (req, res, next) => { //sortby same tham số
     const today = new Date();
     if (req.params.sortBy === "today") {
         result = result.filter((e) => {
-            return new Date(e.date).toDateString() === today.toDateString();
+            return new Date(e.date).toDateString() === today.toDateString(); //chuyển e.time về string dạng ngày
         });
         res.render("homeAdmin", {
             customerOrder: result,
