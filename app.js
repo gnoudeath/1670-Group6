@@ -57,7 +57,6 @@ app.post('/login',async(req,res)=>{
                         email: customer.email,
                     };
                     console.log("Loged in with: ");
-                    console.log(req.session.user);
                     if (role == "Customer"){
                         res.redirect("/index/?userName="+req.session.user.name)
                     }
@@ -91,7 +90,7 @@ app.post("/register", async(req,res)=>{
     const address = req.body.txtAddress;
     const phone = req.body.txtPhone;
     const fullname = req.body.txtFullname;
-    const hashPass = await bcrypt.hash(pass, 10);
+    const hashPass = await bcrypt.hash(pass, 10); // mã hóa password truyền vào và gán nó vào biến hashPass để có thể lưu pass vào database
     const exitUser = await dbHandler.checkUserLogin(userName);
     if (exitUser == -1){
         const validPass = await bcrypt.compare(rePass, hashPass);
