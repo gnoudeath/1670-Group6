@@ -253,7 +253,7 @@ router.post("/feedback", (req, res) => {
   var today = new Date()
   var time = today.getFullYear() + '-' + (today.getMonth()+1) + '-'+ today.getDate() + '-' + today.getHours() + ":" + today.getMinutes();
   const bod = {
-    ...req.body,
+    ...req.body, // sao chep cac phan tu cua req.body
     username: req.session.user.name,
     time: time,
   };
@@ -261,8 +261,8 @@ router.post("/feedback", (req, res) => {
   res.redirect("back")
 });
 
-router.get('/test', (req, res) => {
-  res.render('cmttest')
-})
+// router.get('/test', (req, res) => {
+//   res.render('cmttest')
+// })
 
 module.exports = router;
