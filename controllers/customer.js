@@ -69,7 +69,7 @@ router.get("/search", async (req, res) => {
       dbHandler.searchObjectbyPrice,
       "Book",
       Number.parseFloat(searchInput),
-      " VND"
+      " "
     );
   } else {
     await SearchObject(
